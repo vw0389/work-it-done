@@ -103,8 +103,14 @@ dist
 # TernJS port file
 .tern-port
 
+<<<<<<< HEAD
 # Apple custom attributes file
 .DS_Store
 
 # Drafting HTML file
 drafting.html
+=======
+# TJ's working files
+drafting.html
+user-story.md
+>>>>>>> e96c82183f17eac550b9a6202269c0f5861e3662

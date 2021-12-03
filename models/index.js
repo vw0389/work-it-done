@@ -20,11 +20,13 @@ Columns.belongsTo(Projects, {});
 // Projects hasMany Columns
 Projects.hasMany(Columns, {});
 
+
 // Cards belongsTo Columns
 Cards.belongsTo(Columns, {});
 
 // Columns hasMany Cards
 Columns.hasMany(Cards, {});
+
 
 module.exports = {
   Projects,

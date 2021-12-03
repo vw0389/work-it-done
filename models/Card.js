@@ -4,11 +4,11 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 // initialize model
-class Board extends Model {}
+class Card extends Model {}
 
 
 // set up fields and rules
-Board.init(
+Card.init(
 
 
 
@@ -17,8 +17,8 @@ Board.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'board',  
+        modelName: 'card',  
     }
 );
 
-module.exports = Board;
+module.exports = Card;

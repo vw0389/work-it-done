@@ -1,7 +1,7 @@
 // import models
-const Board = require('./Board');
-const List = require('./List');
-const Task = require('./Task');
+const Project = require('./Project');
+const Column = require('./Column');
+const Card = require('./Card');
 const User = require('./User');
 
 // Board belongsTo User

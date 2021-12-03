@@ -1,10 +1,41 @@
 <div>
   <h2>Welcome to Work It Done</h2>
   <h3>Work It Done helps you get your organized. Whether keeping yourself on task or collaborating as a team, Work It
-    Done can assist you with keeping notes or tracking your progress through a large project.
-
-    <a href='/login'>Log in today</a>
-    to start optimizing your workflow.
+    Done can assist you with keeping notes or tracking your progress through a large project. Register an account or log
+    in to start optimizing your workflows now.
   </h3>
+  <div id='login-page'>
+    <form id='login-form'>
+      <h2>Login</h2>
+      <div>
+        <label for='login-username'>username</label>
+        <input type='text' id='login-username' name='login-username' />
+      </div>
+      <div>
+        <label for='login-password'>password</label>
+        <input type='password' name='login-password' id='login-password' />
+      </div>
+      <button type='submit' id='login-button'>Login</button>
+    </form>
+
+    <h3> or </h3>
+
+    <form id='register-form'>
+      <h2>Register</h2>
+      <div>
+        <label for='register-username'>username</label>
+        <input type='text' id='register-username' name='register-username' />
+      </div>
+      <div>
+        <label for='register-password'>password</label>
+        <input type='password' name='register-password' id='register-password' />
+      </div>
+      <button type='submit' id='register-button'>Register</button>
+    </form>
+
+  </div>
+
+  <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+  <script type='text/javascript' src='/javascript/login.js'></script>
 
 </div>

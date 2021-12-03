@@ -36,7 +36,7 @@ const columnsdata = [
   {
     name: 'Finished',
     project_id: 3,
-  },
+  }
 ];
 
 const seedColumns = () => Columns.bulkCreate(columnsdata);

@@ -5,15 +5,10 @@
 
     <h3>Project List</h3>
     <ul>
-      {{!-- {{#each projects}}
-    <li><a href='/project/{{id}}'>{{name}}</a></li>
-  {{/each}} --}}
-      <li><button class='project-button' data-project-id='projectID'>Project Name 1</button><button>+</button><button
-        >-</button></li>
-      <li><button class='project-button' data-project-id='projectID'>Project Name 2</button><button>+</button><button
-        >-</button></li>
-      <li><button class='project-button' data-project-id='projectID'>Project Name 3</button><button>+</button><button
-        >-</button></li>
+      {{#each projects}}
+        <li><button class='project-button' data-project-id='{{id}}'>{{name}}</li>
+      {{/each}}
+
       <li><button class='create-project'>Create a new project</button></li>
     </ul>
   </div>
@@ -21,7 +16,7 @@
   <div id='project-workspace'>
 
     <header>
-      <h2>Project Name</h2>
+      <h3>Project Name</h3>
       <div>
         <button>Save Board</button>
         <button>Delete Board</button>
@@ -129,4 +124,4 @@
 <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
 <script src='https://code.jquery.com/ui/1.13.0/jquery-ui.js'></script>
 
-<script type='text/javascript' src='/javascript/project.js'></script>
+<script type='text/javascript' src='/javascript/workspace.js'></script>

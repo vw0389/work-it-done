@@ -7,12 +7,8 @@ router.get('/', (req, res) => {
   res.render('homepage', {info: 'Hello!'});
 });
 
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard', {projects});
+router.get('/workspace', (req, res) => {
+  res.render('workspace', {projects});
 });
 
 router.get('/project/:id', (req, res) => {

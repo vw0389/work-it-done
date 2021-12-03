@@ -1,47 +1,47 @@
 // import models
-const Project = require('./Project');
-const Column = require('./Column');
-const Card = require('./Card');
-const User = require('./User');
+const Projects = require('./Projects');
+const Columns = require('./Columns');
+const Cards = require('./Cards');
+const Users = require('./Users');
 
-// Board belongsTo User
-Board.belongsTo(User, {
-
-});
-
-// User hasMany boards
-User.hasMany(Board, {
+// Projects belongsTo Users
+Projects.belongsTo(Users, {
 
 });
 
-
-// List belongsTo Board
-List.belongsTo(Board, {
+// Users hasMany Projects
+Users.hasMany(Projects, {
 
 });
 
 
-// Board hasMany Lists
-Board.hasMany(List, {
+// Columns belongsTo Projects
+Columns.belongsTo(Projects, {
 
 });
 
 
-// Task belongsTo List
-Task.belongsTo(List, {
+// Projects hasMany Columns
+Projects.hasMany(Columns, {
 
 });
 
 
-// List hasMany Tasks
-List.hasMany(Task, {
+// Cards belongsTo Columns
+Cards.belongsTo(Columns, {
+
+});
+
+
+// Columns hasMany Cards
+Columns.hasMany(Cards, {
 
 });
 
 
 module.exports = {
-    Board,
-    List,
-    Task,
-    User
+    Projects,
+    Columns,
+    Cards,
+    Users
 };

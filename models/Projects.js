@@ -4,11 +4,11 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 // initialize model
-class Column extends Model {}
+class Projects extends Model {}
 
 
 // set up fields and rules
-Column.init(
+Projects.init(
 
 
 
@@ -17,8 +17,8 @@ Column.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'column',  
+        modelName: 'Projects',  
     }
 );
 
-module.exports = Column;
+module.exports = Projects;

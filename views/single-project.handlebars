@@ -1,0 +1,13 @@
+<a href='/dashboard'>Back to dashboard</a>
+<button> Save project</button>
+<button> Delete project</button>
+{{#each columns}}
+  <div>
+    <h3>{{Column Name}}</h3>
+    <ul>
+      {{#each card}}
+        <li>Card</li>
+      {{/each}}
+    </ul>
+  </div>
+{{/each}}

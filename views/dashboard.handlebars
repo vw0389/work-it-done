@@ -1,8 +1,10 @@
-<h2>
-  Your dashboard
-</h2>
+<h2>Your dashboard</h2>
+
+<a href='/project/'><h3>Create a new project</h3></a>
+
 <h3>Your project list</h3>
 <ol>
-  <l1>Project 1</l1>
-  <li>Project 2</li>
+  {{#each projects}}
+    <li><a href='/project/{{id}}'>{{name}}</a></li>
+  {{/each}}
 </ol>

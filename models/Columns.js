@@ -9,15 +9,32 @@ class Columns extends Model {}
 
 // set up fields and rules
 Columns.init(
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+          },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        project_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'projects',
+                key: 'id'
+            }
+        }
 
-
-
+    },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Columns',  
+        modelName: 'columns',  
     }
 );
 

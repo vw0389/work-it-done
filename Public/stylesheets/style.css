@@ -1,0 +1,36 @@
+:root {
+  --primary: #6bffe6;
+  --complementary: #8f3511;
+  --background: #1f8f7c; /* Consider off-white */
+  --typeface: #1a1a1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+}
+
+.column-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.column-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}

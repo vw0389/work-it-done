@@ -11,7 +11,7 @@ Projects.belongsTo(Users, {
 
 // Users hasMany Projects
 Users.hasMany(Projects, {
-
+    onDelete: "cascade"
 });
 
 
@@ -23,7 +23,7 @@ Columns.belongsTo(Projects, {
 
 // Projects hasMany Columns
 Projects.hasMany(Columns, {
-
+    onDelete: "cascade"
 });
 
 
@@ -35,7 +35,7 @@ Cards.belongsTo(Columns, {
 
 // Columns hasMany Cards
 Columns.hasMany(Cards, {
-
+    onDelete: "cascade"
 });
 
 

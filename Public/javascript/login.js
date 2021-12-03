@@ -7,7 +7,7 @@ const loginFormHandler = event => {
 
 $('#login-form').on('submit', loginFormHandler);
 
-async const registerFormHandler = event => {
+const registerFormHandler = event => {
   event.preventDefault();
 
   const username = $('#register-username').val().trim();

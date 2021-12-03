@@ -13,3 +13,7 @@ $('.project-button').on('click', () => {
   console.log(projectId);
   document.location.replace(`/workspace/${projectId}`);
 });
+
+$('#login-button').on('click', () => {
+  window.location.replace('/workspace');
+});

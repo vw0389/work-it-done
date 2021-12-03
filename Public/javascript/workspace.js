@@ -4,6 +4,12 @@ $('#column-1, #column-2')
   })
   .disableSelection();
 
-$('.column-wrapper').sortable();
+$('.column-container').sortable();
 
 $('.card-toggle').accordion({collapsible: true, active: false});
+
+$('.project-button').on('click', () => {
+  const projectId = $(this).data('project-id');
+  console.log(projectId);
+  document.location.replace(`/workspace/${projectId}`);
+});

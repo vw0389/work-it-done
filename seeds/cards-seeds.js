@@ -26,19 +26,19 @@ const cardsdata = [
         text: "denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
         column_id: 4
     }, {
-        name: "card 1",
+        name: "card 3",
         text: "lorem lorem lorem lorem",
         column_id: 5
     }, {
-        name: "card 1",
+        name: "card 4",
         text: "lorem lorem lorem lorem",
         column_id: 6
     }, {
-        name: "card 1",
+        name: "card 5",
         text: "lorem lorem lorem lorem",
         column_id: 7
     }, {
-        name: "card 1",
+        name: "card 6",
         text: "lorem lorem lorem lorem",
         column_id: 8
     }

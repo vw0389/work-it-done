@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# TJ's working files
+drafting.html
+user-story.md

@@ -4,4 +4,6 @@ $('#column-1, #column-2')
   })
   .disableSelection();
 
+$('.column-wrapper').sortable();
+
 $('.card-toggle').accordion({collapsible: true, active: false});

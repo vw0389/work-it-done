@@ -1,0 +1,127 @@
+<h2>Your Workspace</h2>
+<div id='workspace-page'>
+
+  <div id='project-list'>
+
+    <h3>Project List</h3>
+    <ul>
+      {{#each projects}}
+        <li><button class='project-button' data-project-id='{{id}}'>{{name}}</li>
+      {{/each}}
+
+      <li><button class='create-project'>Create a new project</button></li>
+    </ul>
+  </div>
+
+  <div id='project-workspace'>
+
+    <header>
+      <h3>Project Name</h3>
+      <div>
+        <button>Save Board</button>
+        <button>Delete Board</button>
+      </div>
+
+    </header>
+
+    <div class='column-container'>
+
+      <div class='column-wrapper'>
+
+        <h3>Column 1 Name</h3>
+        <ul id='column-1' class='column'>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class='column-wrapper'>
+        <h3>Column 2 Name</h3>
+        <ul id='column-1' class='column'>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+          <li class='card'>
+            <div class='card-toggle'>
+              <h3>Task 1</h3>
+              <div>
+                <p>information</p>
+                <button>edit</button>
+                <button>delete</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script src='https://code.jquery.com/ui/1.13.0/jquery-ui.js'></script>
+
+<script type='text/javascript' src='/javascript/workspace.js'></script>

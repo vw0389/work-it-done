@@ -6,42 +6,31 @@ const Users = require('./Users');
 
 // Projects belongsTo Users
 Projects.belongsTo(Users, {
-
+  foreignKey: 'user_id',
 });
 
 // Users hasMany Projects
 Users.hasMany(Projects, {
-    onDelete: "cascade"
+  foreignKey: 'user_id',
 });
-
 
 // Columns belongsTo Projects
-Columns.belongsTo(Projects, {
-
-});
-
+Columns.belongsTo(Projects, {});
 
 // Projects hasMany Columns
-Projects.hasMany(Columns, {
-    onDelete: "cascade"
-});
+Projects.hasMany(Columns, {});
 
 
 // Cards belongsTo Columns
-Cards.belongsTo(Columns, {
-
-});
-
+Cards.belongsTo(Columns, {});
 
 // Columns hasMany Cards
-Columns.hasMany(Cards, {
-    onDelete: "cascade"
-});
+Columns.hasMany(Cards, {});
 
 
 module.exports = {
-    Projects,
-    Columns,
-    Cards,
-    Users
+  Projects,
+  Columns,
+  Cards,
+  Users,
 };

@@ -2,14 +2,14 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 // import db connection
-const sequelize = require('../config/connection.js');
+const sequelize = require('../config/connection');
 
 // initialize model
 class Users extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
-      }
- }
+    }
+}
 
 
 // set up fields and rules
@@ -52,14 +52,12 @@ Users.init(
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
             }
-        }
-    },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'users',
+        },
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'users',
     }
 );
 

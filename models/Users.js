@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 // import db connection
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
 
 // initialize model
 class Users extends Model {
@@ -11,7 +11,6 @@ class Users extends Model {
     }
 }
 
-
 // set up fields and rules
 Users.init(
     {
@@ -19,15 +18,14 @@ Users.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isEmail: true
-            }
-
+                isEmail: true,
+            },
         },
         password: {
             type: DataTypes.STRING,
@@ -35,11 +33,10 @@ Users.init(
             validate: {
                 len: {
                     args: [7, 42],
-                    msg: "The password should be between 7 and 42 characters long."
-                }
-            }
-
-        }
+                    msg: 'The password should be between 7 and 42 characters long.',
+                },
+            },
+        },
     },
     {
         hooks: {
@@ -53,11 +50,13 @@ Users.init(
                 return updatedUserData;
             }
         },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'users',
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'users',
     }
 );
 

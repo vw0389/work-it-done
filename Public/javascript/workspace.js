@@ -1,4 +1,4 @@
-$('#column-1, #column-2')
+$('.column')
   .sortable({
     connectWith: '.column',
   })
@@ -17,3 +17,6 @@ $('.project-button').on('click', () => {
 $('#login-button').on('click', () => {
   window.location.replace('/workspace');
 });
+
+$('#tabs').tabs({collapsible: true, active: false}).addClass('ui-tabs-vertical ui-helper-clearfix');
+$('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');

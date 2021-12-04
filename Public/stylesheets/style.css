@@ -125,6 +125,7 @@ ul {
 #project-workspace {
   flex: 1;
 }
+
 .column-container {
   display: flex;
   justify-content: flex-start;
@@ -170,4 +171,39 @@ ul {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.ui-tabs {
+  padding: 2rem;
+}
+.ui-tabs-vertical {
+  width: 100%;
+}
+.ui-tabs-anchor {
+  font-size: 1rem;
+}
+.ui-tabs-vertical .ui-tabs-nav {
+  padding: 0.2em 0.1em 0.2em 0.2em;
+  float: left;
+  width: 20%;
+}
+.ui-tabs-vertical .ui-tabs-nav li {
+  clear: left;
+  width: 100%;
+  border-bottom-width: 1px !important;
+  border-right-width: 0 !important;
+  margin: 0 -1px 0.2em 0;
+}
+.ui-tabs-vertical .ui-tabs-nav li a {
+  /* display: block; */
+}
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+  padding-bottom: 0;
+  padding-right: 0.1em;
+  border-right-width: 1px;
+}
+.ui-tabs-vertical .ui-tabs-panel {
+  /* padding: 1em;
+  float: right;
+  width: 40em; */
 }

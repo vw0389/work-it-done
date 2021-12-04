@@ -1,6 +1,12 @@
 # WORK-IT-DONE
 
-# Discription
+## Table of Contents 
+* [Description](#description)
+* [Instructions](#instructions)
+* [Technologies Utilized](#technologies-utilized)
+* [Credits & Questions](#credits-questions)
+
+# Description
 For our project we decided to make a project tracking website. 
 
 Project Requirements:
@@ -20,9 +26,17 @@ Project Requirements:
  * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 
-Based on the above requirements we decided to make a trello style kanban board. Each project is equivalant to a workspace, within that project there are tasks that need to be accomplished. These tasks can be moved via drag and drop from one column to another based on the updated state of the task.
+Based on the above requirements we decided to make a Trello-style kanban board. Each project is equivalant to a workspace, within that project there are tasks that need to be accomplished. These tasks can be moved via drag and drop from one column to another based on the updated state of the task.
 
-# Technology Utilized
+## Instructions 
+1. Users who are new to the site should sign up with an email and password.
+2. Returning users should log in with the same email and password.
+3. Create a project
+4. Add status columns
+5. Add cards to the columns
+6. Move cards from column to column as the current status of the cards change
+
+# Technologies Utilized
  
  * booststrap
  * MySQL
@@ -34,3 +48,11 @@ Based on the above requirements we decided to make a trello style kanban board. 
  * JavaScript
  * HTML
  * CSS
+
+## Credits & Questions
+If you have any questions please connect with us through Github. 
+
+* [Victor Weinert](https://github.com/vw0389)
+* [Patrick Sebstead](https://github.com/RaiderNationBuilder)
+* [TJ James](https://github.com/jamestw13)
+* [Lauren Groh](https://github.com/GrohTech)

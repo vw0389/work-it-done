@@ -4,6 +4,7 @@
 * [Description](#description)
 * [Instructions](#instructions)
 * [Technologies Utilized](#technologies-utilized)
+* [Contributions](#contributions)
 * [Questions](#questions)
 
 ## Description
@@ -50,6 +51,13 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
  * JavaScript
  * HTML
  * CSS
+
+## Contributions
+
+* Victor Weinert - project management (role assignments, scheduling, bug fixes), schema design, seeds, routes, password encryption, Heroku deployment
+* Patrick Sebstead - RESTful API design (routes), README
+* TJ James - front end mock up, html, css, Handlebars templates, bug fixes
+* Lauren Groh - ORM design (models & associations, password encryption), README, PowerPoint slideshow
 
 ## Questions
 

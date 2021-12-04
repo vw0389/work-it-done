@@ -4,9 +4,10 @@
 * [Description](#description)
 * [Instructions](#instructions)
 * [Technologies Utilized](#technologies-utilized)
-* [Credits & Questions](#credits-questions)
+* [Questions](#questions)
 
-# Description
+## Description
+
 For our project we decided to make a project tracking website. 
 
 Project Requirements:
@@ -29,6 +30,7 @@ Project Requirements:
 Based on the above requirements we decided to make a Trello-style kanban board. Each project is equivalant to a workspace, within that project there are tasks that need to be accomplished. These tasks can be moved via drag and drop from one column to another based on the updated state of the task.
 
 ## Instructions 
+
 1. Users who are new to the site should sign up with an email and password.
 2. Returning users should log in with the same email and password.
 3. Create a project
@@ -36,7 +38,7 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 5. Add cards to the columns
 6. Move cards from column to column as the current status of the cards change
 
-# Technologies Utilized
+## Technologies Utilized
  
  * booststrap
  * MySQL
@@ -49,7 +51,8 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
  * HTML
  * CSS
 
-## Credits & Questions
+## Questions
+
 If you have any questions please connect with us through Github. 
 
 * [Victor Weinert](https://github.com/vw0389)

@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 // import db connection
-const sequelize = require('../config/connection.js');
+const sequelize = require('../config/connection');
 
 // initialize model
 class Users extends Model {
@@ -34,9 +34,9 @@ Users.init(
                 len: {
                     args: [7, 42],
                     msg: 'The password should be between 7 and 42 characters long.',
-                },
-            },
-        },
+                }
+            }
+        }
     },
     {
         hooks: {
@@ -50,8 +50,8 @@ Users.init(
                 return updatedUserData;
             }
         },
-    },
-    {
+    
+    
         sequelize,
         timestamps: false,
         freezeTableName: true,

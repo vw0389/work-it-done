@@ -1,61 +1,58 @@
-const { Model, DataTypes } = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
 
 // import db connection
 const sequelize = require('../config/connection.js');
 
 // initialize model
-class Users extends Model { }
-
+class Users extends Model {}
 
 // set up fields and rules
 Users.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true
-            }
-
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: {
-                    args: [7, 42],
-                    msg: "The password should be between 7 and 42 characters long."
-                }
-            }
-
-        }
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        hooks: {
-            async beforeCreate(newUserData) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
-                return newUserData;
-            },
-
-            async beforeUpdate(updatedUserData) {
-                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-                return updatedUserData;
-            }
-        }
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
     },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'users',
-    }
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [7, 42],
+          msg: 'The password should be between 7 and 42 characters long.',
+        },
+      },
+    },
+  },
+  // {
+  //     hooks: {
+  //         async beforeCreate(newUserData) {
+  //             newUserData.password = await bcrypt.hash(newUserData.password, 10);
+  //             return newUserData;
+  //         },
+
+  //         async beforeUpdate(updatedUserData) {
+  //             updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+  //             return updatedUserData;
+  //         }
+  //     }
+  // },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'users',
+  }
 );
 
 module.exports = Users;

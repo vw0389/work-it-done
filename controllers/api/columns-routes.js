@@ -1,22 +1,30 @@
 const router = require('express').Router();
-const {Projects, Cards} = require('../../models');
+const {Projects, Cards, Columns} = require('../../models');
 const sequelize = require('../../config/connection');
-// const withAuth = require('../../utils/auth');
 
 // model: columns: name, FK(project_id)
 
-// get all columns for a project
-router.get('/columns/:projectId', (req, res) => {
-  Projects.findAll({
+// get all columns
+router.get('/', (req, res) =>
+  Columns.findAll()
+  .then(dbPostData =>
+    res.json(dbPostData)).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
+)
+
+// get all columns for a project ---WORKING
+router.get('/:projectId', (req, res) => {
+  Columns.findAll({
     where: {
       project_id: req.params.projectId,
     },
   }).then(dbPostData =>
-    res.json(dbPostData).catch(err => {
+    res.json(dbPostData)).catch(err => {
       console.log(err);
       res.status(500).json(err);
     })
-  );
 });
 
 // post create new column

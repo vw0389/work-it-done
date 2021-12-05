@@ -1,13 +1,12 @@
 const router = require('express').Router();
-const {Projects, Cards, Columns} = require('../../models');
+const {Projects, Cards, Columns, Users} = require('../../models');
 const sequelize = require('../../config/connection');
-// const withAuth = require('../../utils/auth');
 
 // users: id, email, password
 
 // get all projects for a user
-router.get('/api/users-routes/:user', (req, res) => {
-  Projects.findAll({
+router.get('/:id', (req, res) => {
+  Users.findAll({
     where: {
       id: req.params.id,
     },

@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const {Projects, Cards, Columns} = require('../../models');
+const { Projects, Cards, Columns } = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: columns: name, FK(project_id)
 
-// get all columns
+// get all columns ---WORKING
 router.get('/', (req, res) =>
   Columns.findAll()
-  .then(dbPostData =>
-    res.json(dbPostData)).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    })
+    .then(dbPostData =>
+      res.json(dbPostData)).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      })
 )
 
 // get all columns for a project ---WORKING
@@ -20,45 +20,53 @@ router.get('/:projectId', (req, res) => {
     where: {
       project_id: req.params.projectId,
     },
-  }).then(dbPostData =>
-    res.json(dbPostData)).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    })
+  }).then(dbPostData => {
+    if (!dbPostData[0]) {
+      res.status(404)
+        .json({ message: 'There was no column found with this id.' });
+      return;
+    }
+    res.json(dbPostData)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
 });
 
-// post create new column
-router.post('/columns', (req, res) => {
+// post create new column   ---WORKING
+router.post('/', (req, res) => {
   console.log(req.body);
-  Projects.create({
+  Columns.create({
     name: req.body.name,
     project_id: req.body.columnId,
   }).then(dbPostData =>
-    res.json(dbPostData).catch(err => {
+    res.json(dbPostData))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     })
-  );
 });
 
-// put update columns within project
-router.put('/columns/:projectId', (req, res) => {
-  console.log(req.body);
-  Projects.update(
-    {
-      name: req.body.name,
+// put update columns within project   ---WORKING
+router.put('/:id', (req, res) => {
+  Columns.update(req.body, {
+    where: {
+      id: req.params.id,
     },
-    {
-      where: {
-        project_id: req.body.projectId,
-      },
+  }
+  ).then(dbPostData => {
+    if (!dbPostData[0]) {
+      res.status(404)
+        .json({ message: 'There was no column found with this id.' });
+      return;
     }
-  ).then(dbPostData =>
-    res.json(dbPostData).catch(err => {
+    console.log(dbPostData[0])
+    res.json(dbPostData)
+  })
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     })
-  );
 });
 
 module.exports = router;

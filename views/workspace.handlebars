@@ -1,0 +1,60 @@
+<h2>Your Workspace</h2>
+<div id='workspace-page'>
+
+  <div id='tabs'>
+
+    <ul>
+      <li>
+        <h3>Project List</h3>
+
+      </li>
+      {{#each projects}}
+        <li>
+          <a href='#project-{{id}}' class='project-tab'>{{name}}</a>
+        </li>
+      {{/each}}
+
+    </ul>
+
+    {{#each projects}}
+      <div id='project-{{id}}'>
+        <div class='flex-row'>
+          <h3>{{name}}</h3>
+          <div>
+            <button>Save Board</button>
+            <button>Delete Board</button>
+          </div>
+        </div>
+
+        <div class='column-container'>
+
+          {{#each columns}}
+            <div class='column-wrapper'>
+              <h3>{{name}}</h3>
+              <ul id='column-{{id}}' class='column'>
+                {{#each cards}}
+                  <li class='card'>
+                    <div class='card-toggle'>
+                      <h3>{{name}}</h3>
+                      <div>
+                        <p>{{text}}</p>
+                        <button>edit</button>
+                        <button>delete</button>
+                      </div>
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/each}}
+          <button>Add Column</button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script src='https://code.jquery.com/ui/1.13.0/jquery-ui.js'></script>
+
+<script type='text/javascript' src='/javascript/workspace.js'></script>

@@ -12,5 +12,3 @@ const sequelize = process.env.JAWSDB_URL
     });
 
 module.exports = sequelize;
-
-// Likely needs database name changed to a static string

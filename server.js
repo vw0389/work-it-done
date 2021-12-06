@@ -9,8 +9,9 @@ const hbs = exphbs.create({});
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
-app.use(express.static(path.join(__dirname, 'public')));
+let public =  path.join(__dirname, 'Public');
+app.use(express.static(public));
+console.log(public)
 app.use(routes);
 
 app.engine('handlebars', hbs.engine);

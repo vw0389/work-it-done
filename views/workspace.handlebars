@@ -1,7 +1,7 @@
 <h2>Your Workspace</h2>
 <div id='workspace-page'>
 
-  <div id='tabs'>
+  <div id='tabs' class='lt-on-blue'>
 
     <ul>
       <li>
@@ -13,44 +13,54 @@
           <a href='#project-{{id}}' class='project-tab'>{{name}}</a>
         </li>
       {{/each}}
+      <li>
+        <a href='#project-new' class='project-tab'>Create new project</a>
+      </li>
 
     </ul>
 
-    {{#each projects}}
-      <div id='project-{{id}}'>
-        <div class='flex-row'>
-          <h3>{{name}}</h3>
-          <div>
-            <button>Save Board</button>
-            <button>Delete Board</button>
+    <div class='project-workspace'>
+
+      {{#each projects}}
+        <div id='project-{{id}}'>
+          <div class='flex-row'>
+            <h3>{{name}}</h3>
+            <div>
+              <button>Save Board</button>
+              <button>Delete Board</button>
+            </div>
+          </div>
+
+          <div class='column-container'>
+
+            {{#each columns}}
+              <div class='column-wrapper'>
+                <h3>{{name}}</h3>
+                <ul id='column-{{id}}' class='column'>
+                  {{#each cards}}
+                    <li class='card'>
+                      <div class='card-toggle'>
+                        <h3>{{name}}</h3>
+                        <div>
+                          <p>{{text}}</p>
+                          <button class='card-button'>Edit</button>
+                          <button class='card-button'>Delete</button>
+                        </div>
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
+                <button class='not-sortable'>Add Card</button>
+              </div>
+            {{/each}}
+            <div class='column-wrapper'>
+
+              <button>Add Column</button>
+            </div>
           </div>
         </div>
-
-        <div class='column-container'>
-
-          {{#each columns}}
-            <div class='column-wrapper'>
-              <h3>{{name}}</h3>
-              <ul id='column-{{id}}' class='column'>
-                {{#each cards}}
-                  <li class='card'>
-                    <div class='card-toggle'>
-                      <h3>{{name}}</h3>
-                      <div>
-                        <p>{{text}}</p>
-                        <button>edit</button>
-                        <button>delete</button>
-                      </div>
-                    </div>
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-          {{/each}}
-          <button>Add Column</button>
-        </div>
-      </div>
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
 </div>
 

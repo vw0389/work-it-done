@@ -1,6 +1,8 @@
 $('.column')
   .sortable({
     connectWith: '.column',
+    placeHolder: 'ui-state-highlight',
+    items: 'li:not(.not-sortable)',
   })
   .disableSelection();
 

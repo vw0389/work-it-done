@@ -1,3 +1,14 @@
+// Make projects selectable through tabs
+$('.project-button').on('click', () => {
+  const projectId = $(this).data('project-id');
+  console.log(projectId);
+  document.location.replace(`/workspace/${projectId}`);
+});
+
+// Make columns sortable
+$('.column-container').sortable();
+
+// Make cards sortable
 $('.column')
   .sortable({
     connectWith: '.column',
@@ -6,15 +17,9 @@ $('.column')
   })
   .disableSelection();
 
-$('.column-container').sortable();
-
+// Make cards toggleable
 $('.card-toggle').accordion({collapsible: true, active: false});
 
-$('.project-button').on('click', () => {
-  const projectId = $(this).data('project-id');
-  console.log(projectId);
-  document.location.replace(`/workspace/${projectId}`);
-});
 
 $('#login-button').on('click', () => {
   window.location.replace('/workspace');
@@ -22,3 +27,4 @@ $('#login-button').on('click', () => {
 
 $('#tabs').tabs({collapsible: true, active: false}).addClass('ui-tabs-vertical ui-helper-clearfix');
 $('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
+=

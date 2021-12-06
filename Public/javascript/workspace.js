@@ -20,11 +20,9 @@ $('.column')
 // Make cards toggleable
 $('.card-toggle').accordion({collapsible: true, active: false});
 
-
 $('#login-button').on('click', () => {
   window.location.replace('/workspace');
 });
 
 $('#tabs').tabs({collapsible: true, active: false}).addClass('ui-tabs-vertical ui-helper-clearfix');
 $('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
-=

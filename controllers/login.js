@@ -1,9 +1,8 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
 const { Users } = require('../models');
-const session = require('express-session');
+
 router.post('/login', (req, res) => {
-    // Expects json object { email: me@vweinert.com, password: "passythepassword"}
+    // Expects json object { "email": "notrealemail@vweinert.com", "password": "passythepassword"}
     Users.findOne({
         where: {
             email: req.body.email
@@ -22,11 +21,18 @@ router.post('/login', (req, res) => {
         req.session.save(() => {
             // declare session variables
             req.session.user_id = User.id;
-            req.session.username = User.username;
+            req.session.email = User.email;
             req.session.loggedIn = true;
-
-            res.json({ user: dbUserData, message: 'Logged in' });
+            
+            delete User.dataValues.password;
+            
+            res.json({ user: User, message: 'Logged in' });
         });
+
+        // This doesn't work for some fucking reason
+        // delete User.password;
+
+        
     });
 });
 
@@ -40,3 +46,5 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
       }
 });
+
+module.exports = router;

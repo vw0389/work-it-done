@@ -2,28 +2,28 @@ const Columns = require('../models/Columns');
 
 const columnsdata = [
   {
-    name: 'TO DO',
+    name: 'To Learn',
     project_id: 1,
   },
   {
-    name: 'In Progress',
+    name: 'Learning',
     project_id: 1,
   },
   {
-    name: 'Finished',
+    name: 'Learned',
     project_id: 1,
   },
   {
-    name: 'In Progress',
+    name: 'Add',
     project_id: 2,
   },
   {
-    name: 'Finished',
+    name: 'Commit',
     project_id: 2,
   },
   {
-    name: 'English Bob',
-    project_id: 3,
+    name: 'Push',
+    project_id: 2,
   },
   {
     name: 'To Do',
@@ -36,7 +36,44 @@ const columnsdata = [
   {
     name: 'Finished',
     project_id: 3,
-  }
+  },
+  {
+    name: 'To Do',
+    project_id: 4,
+  },
+  {
+    name: 'In Progress',
+    project_id: 4,
+  },
+  {
+    name: 'Finished',
+    project_id: 4,
+  },
+  {
+    name: 'To Do',
+    project_id: 5,
+  },
+  {
+    name: 'In Progress',
+    project_id: 5,
+  },
+  {
+    name: 'Finished',
+    project_id: 5,
+  },
+  {
+    name: 'To Do',
+    project_id: 6,
+  },
+  {
+    name: 'In Progress',
+    project_id: 6,
+  },
+  {
+    name: 'Finished',
+    project_id: 6,
+  },
+  
 ];
 
 const seedColumns = () => Columns.bulkCreate(columnsdata);

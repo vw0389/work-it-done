@@ -48,10 +48,6 @@ a {
   font-size: 1.5rem;
 }
 
-div {
-  border-radius: 5px;
-}
-
 a {
   text-decoration: none;
   color: var(--catalina-blue);
@@ -94,6 +90,10 @@ ul {
   list-style: none;
   margin-block-start: 0;
   padding-inline-start: 0;
+}
+
+.br-5 {
+  border-radius: 5px;
 }
 
 /* HOMEPAGE SPECIFIC CSS */
@@ -159,23 +159,15 @@ ul {
   padding: 1rem;
   margin: 1em;
   background-color: var(--pastel-green);
-  flex: 1 1 20%;
+  flex: 0 0 20rem;
 }
 
 .column {
   padding: 5px 0;
 }
 
-.card-button {
-  padding: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: normal;
-  margin: 0.25rem;
-}
-
-.card-button:hover {
-  background-color: var(--pastel-green);
-  color: var(--catalina-blue);
+.card-text {
+  height: 100px;
 }
 
 .separator {
@@ -241,3 +233,20 @@ ul {
   float: right;
   width: 40em;
 } */
+
+.ui-icon {
+  z-index: 99;
+}
+
+::-webkit-scrollbar {
+  width: 10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--catalina-blue);
+  border-radius: 5px;
+}
+
+.ui-accordion-content-active {
+  height: 100%;
+}

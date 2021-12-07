@@ -22,17 +22,42 @@ router.post('/login', (req, res) => {
       req.session.user_id = User.id;
       req.session.email = User.email;
       req.session.loggedIn = true;
+    });
+});
+router.post('/register', (req, res) => {
+    // Expects json object { "email": "notrealemail@vweinert.com", "password": "passythepassword"}
+    Users.findOne({
+        where: {
+            email: req.body.email
+        }
 
-      delete User.dataValues.password;
+    }).then(User => {
+        if (!User) {
+            Users.create({
+                email: req.body.email,
+                password: req.body.password
+            }).then(userData => {
+                req.session.save(() => {
+                    // declare session variables
+                    req.session.user_id = User.id;
+                    req.session.email = User.email;
+                    req.session.loggedIn = true;
 
-      res.json({user: User, message: 'Logged in'});
+                    delete User.dataValues.password;
+
+                    res.json({ user: User, message: 'Logged in' });
+                });
+            });
+        } else {
+            res.status(400).json({ message: 'user already exists' });
+        }
+
     });
 
     // This doesn't work for some fucking reason
     // delete User.password;
   });
 });
-
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {

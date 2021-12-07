@@ -2,27 +2,27 @@ const Projects = require('../models/Projects');
 
 const projectsdata = [
   {
-    name: 'Doing development stuff',
-    user_id: 2,
-  },
-  {
-    name: 'Doing development stuff more',
-    user_id: 2,
-  },
-  {
-    name: 'Doing taking a break stuff',
-    user_id: 2,
-  },
-  {
-    name: 'Doing development stuff',
-    user_id: 3,
-  },
-  {
-    name: 'doing other development stuff',
+    name: 'Learning Spanish',
     user_id: 1,
   },
   {
-    name: 'doing even more development stuff 3',
+    name: 'Learn front end web development',
+    user_id: 1,
+  },
+  {
+    name: 'Learn music in 6 months',
+    user_id: 2,
+  },
+  {
+    name: 'Train the dog',
+    user_id: 3,
+  },
+  {
+    name: 'Remodel the basement',
+    user_id: 4,
+  },
+  {
+    name: 'Spring cleaning',
     user_id: 3,
   },
 ];

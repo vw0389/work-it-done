@@ -2,54 +2,94 @@ const Cards = require('../models/Cards');
 
 const cardsdata = [
   {
-    name: 'do stuff!',
-    text: 'lorem',
+    name: 'Numbers',
+    text: '1-100',
     column_id: 1,
   },
   {
-    name: 'do other stuff!',
-    text: 'Lorem ipsum dolor sit amet',
+    name: 'Questions',
+    text: 'who, what, when, where, why',
     column_id: 1,
   },
   {
-    name: 'lorem',
-    text: 'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
+    name: 'Body parts',
+    text: 'head, eye, nose, ear, mouth',
     column_id: 1,
   },
   {
-    name: 'lorem 4',
-    text: 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur',
+    name: 'HTML',
+    text: 'elements, attributes, headings, lists',
     column_id: 2,
   },
   {
-    name: 'emo enim ipsam',
-    text: 'lorem lorem lorem lorem',
+    name: 'CSS',
+    text: 'selectors, styling text, background, and boxes',
+    column_id: 2,
+  },
+  {
+    name: 'JavaScript',
+    text: 'variables, functions, arrays, objects',
+    column_id: 2,
+  },
+  {
+    name: 'Beginner',
+    text: 'Notes, scales, and chords',
     column_id: 3,
   },
   {
-    name: 'exercitationem ullam corporis suscipit',
-    text: 'denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.',
+    name: 'Intermediate',
+    text: 'keys, dynamics, rhythm',
+    column_id: 3,
+  },
+  {
+    name: 'Adavanced',
+    text: 'ear training, sight reading, theory',
+    column_id: 3,
+  },
+  {
+    name: 'Basic commands',
+    text: 'sit, down, stay, speak, shake',
     column_id: 4,
   },
   {
-    name: 'card 3',
-    text: 'lorem lorem lorem lorem',
+    name: 'Obedience on the walk',
+    text: 'focus, response time, reactions to other dogs/humans',
+    column_id: 4,
+  },
+  {
+    name: 'Behavior in the house',
+    text: 'reaction at the window, stealing food, jumping on guests, chasing the cats',
+    column_id: 4,
+  },
+  {
+    name: 'Demolition',
+    text: 'dropped ceiling, carpet, wallpaper',
     column_id: 5,
   },
   {
-    name: 'card 4',
-    text: 'lorem lorem lorem lorem',
+    name: 'Rebuild',
+    text: 'patch & paint, install new flooring, update electrical',
+    column_id: 5,
+  },
+  {
+    name: 'Design',
+    text: 'furniture, lighting, wall decor',
+    column_id: 5,
+  },
+  {
+    name: 'Kitchen and bathrooms',
+    text: 'general cleaning, polish cabinets, clean oven',
     column_id: 6,
   },
   {
-    name: 'card 5',
-    text: 'lorem lorem lorem lorem',
-    column_id: 7,
+    name: 'Whole house',
+    text: 'dust, clean windows, clean carpets',
+    column_id: 6,
   },
   {
-    name: 'card 6',
-    text: 'lorem lorem lorem lorem',
-    column_id: 8,
+    name: 'Basement & garage',
+    text: 'purge and organize',
+    column_id: 6,
   },
 ];
 

@@ -28,11 +28,6 @@ router.post('/login', (req, res) => {
             
             res.json({ user: User, message: 'Logged in' });
         });
-
-        // This doesn't work for some fucking reason
-        // delete User.password;
-
-        
     });
 });
 

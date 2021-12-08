@@ -1,15 +1,10 @@
-// // Make projects selectable through tabs
-// $('.project-button').on('click', () => {
-//   const projectId = $(this).data('project-id');
-//   console.log(projectId);
-//   document.location.replace(`/workspace/${projectId}`);
-// });
-
 $('#project-list').sortable({
   items: 'li:not(.not-sortable)',
 });
 
-$('#tabs').tabs({collapsible: true, active: false}).addClass('ui-tabs-vertical ui-helper-clearfix');
+$('#tabs')
+  .tabs({collapsible: true, active: false, heightStyle: 'content'})
+  .addClass('ui-tabs-vertical ui-helper-clearfix');
 $('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
 
 // Make columns sortable
@@ -25,7 +20,7 @@ $('.column')
   .disableSelection();
 
 // Make cards toggleable
-$('.card-toggle').accordion({collapsible: true, active: false});
+$('.card-toggle').accordion({collapsible: true, active: false, heightStyle: 'content'});
 
 $('#login-button').on('click', () => {
   window.location.replace('/workspace');
@@ -39,7 +34,7 @@ $('.project-name').on('click', 'h3', function () {
   textInput.trigger('focus');
 });
 
-$('.project-name').on('blur', 'input', async function (event) {
+$('.project-tab').on('blur', 'input', async function (event) {
   event.stopPropagation();
   const projectName = $(this).val().trim();
   const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
@@ -155,22 +150,29 @@ $('#new-project-button').on('click', () => {
   $(listTab).append(nameLabel, textInput);
 
   $('#new-project-button').replaceWith(listTab);
+  $('#new-project-name').trigger('focus');
 });
 
 $('#project-list').on('blur', 'input', async () => {
   const projectName = $('#new-project-name').val().trim();
-  console.log(projectName);
-  const response = await fetch('api/projects', {
-    method: 'POST',
-    body: JSON.stringify({
-      projectName,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
 
-  if (response.ok) {
+  if (!projectName) {
     document.location.reload();
+  } else {
+    const response = await fetch('/api/projects', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: projectName,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/workspace');
+    } else {
+      console.log(response);
+    }
   }
 });

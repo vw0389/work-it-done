@@ -6,7 +6,7 @@ const loginFormHandler = async event => {
   console.log('login', email, password);
 
   if (email && password) {
-    const response = await fetch('/api/users/login', {
+    const response = await fetch('/login', {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -32,7 +32,7 @@ const registerFormHandler = async event => {
   console.log('register', email, password);
 
   if (email && password) {
-    const response = await fetch('/api/users', {
+    const response = await fetch('/register', {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -49,3 +49,14 @@ const registerFormHandler = async event => {
   }
 };
 $('#register-form').on('submit', registerFormHandler);
+
+$('#workspace-link').on('click', () => {
+  console.log('clicked');
+  if (loggedIn) {
+    console.log('loggedin');
+    document.location.replace('/workspace');
+  } else {
+    console.log('not logged in');
+    $('#login-section').effect('shake');
+  }
+});

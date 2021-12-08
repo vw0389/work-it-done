@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {Users, Projects, Columns, Cards} = require('../models');
+const withAuth = require('../utils/auth');
 
 // Workspace with no project selected
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
+  console.log(req.session.user_id);
   Projects.findAll({
     where: {
-      user_id: 2,
+      user_id: req.session.user_id,
     },
     attributes: ['id', 'name'],
     include: [
@@ -23,7 +25,7 @@ router.get('/', (req, res) => {
     ],
   }).then(dbProjectData => {
     const projects = dbProjectData.map(project => project.get({plain: true}));
-    res.render('workspace', {projects, active: 0});
+    res.render('workspace', {projects, loggedIn: true});
   });
 });
 

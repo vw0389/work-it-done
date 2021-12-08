@@ -22,8 +22,12 @@
         </a>
 
         <nav>
-          <a href='/workspace'>Your Workspace</a>
-          <button id='logout-button'>Logout</button>
+          <button id='workspace-link'>View Your Workspace</button>
+          {{#if loggedIn}}
+
+            <button id='logout-button'>Logout</button>
+          {{/if}}
+
         </nav>
       </header>
 

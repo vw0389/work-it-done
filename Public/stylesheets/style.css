@@ -30,6 +30,7 @@ a {
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
+  white-space: normal;
 }
 h1 {
   font-size: 4rem;
@@ -137,12 +138,12 @@ ul {
   display: flex;
   align-items: flex-start;
   flex: 1;
-  height: 100%;
   background-color: none;
 }
 
 .project-tab {
   font-size: 1.25rem;
+  word-wrap: break-word;
 }
 
 .column-container {
@@ -167,7 +168,6 @@ ul {
 }
 
 .card-text {
-  height: 100px;
 }
 
 .separator {

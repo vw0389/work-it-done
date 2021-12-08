@@ -4,6 +4,16 @@ const sequelize = require('../../config/connection');
 
 // model: projects: name
 
+// get all projects
+router.get('/', (req, res) =>
+  Projects.findAll()
+    .then(dbPostData =>
+      res.json(dbPostData)).catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      })
+);
+
 // get all projects for a user  ---WORKING
 router.get('/:userId', (req, res) => {
   Projects.findAll({
@@ -35,6 +45,28 @@ router.post('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+// put update project data   ---WORKING
+router.put('/:id', (req, res) => {
+  Projects.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  }
+  ).then(dbPostData => {
+    if (!dbPostData[0]) {
+      res.status(404)
+        .json({ message: 'There was no project found with this id.' });
+      return;
+    }
+    console.log(dbPostData[0])
+    res.json(dbPostData)
+  })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 // Delete a project  ---WORKING

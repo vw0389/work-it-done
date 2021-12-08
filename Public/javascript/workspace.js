@@ -1,13 +1,14 @@
 // Edit Project Name
 $('.project-name').on('click', 'h3', function () {
   const projectName = $(this).text().trim();
-  const textInput = $('<input>').attr('type', 'text').val(projectName);
+  const textInput = $('<input>').attr('type', 'text').addClass('project-name').val(projectName);
   $(this).replaceWith(textInput);
   textInput.trigger('focus');
 });
 
-$('.project-tab').on('blur', 'input', async function (event) {
-  event.stopPropagation();
+$('.project-name').on('blur', 'input', async function (event) {
+  // event.stopPropagation();
+  console.log('blurred');
   const projectName = $(this).val().trim();
   const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
 
@@ -25,7 +26,7 @@ $('.project-tab').on('blur', 'input', async function (event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    // alert(response.statusText);
+    console.log(response.statusText);
   }
 
   const nameElement = $('<h3>').text(projectName);

@@ -40,7 +40,7 @@ const registerFormHandler = async event => {
       }),
       headers: {'Content-Type': 'application/json'},
     });
-
+    
     if (response.ok) {
       document.location.replace('/workspace');
     } else {
@@ -49,14 +49,3 @@ const registerFormHandler = async event => {
   }
 };
 $('#register-form').on('submit', registerFormHandler);
-
-$('#workspace-link').on('click', () => {
-  console.log('clicked');
-  if (loggedIn) {
-    console.log('loggedin');
-    document.location.replace('/workspace');
-  } else {
-    console.log('not logged in');
-    $('#login-section').effect('shake');
-  }
-});

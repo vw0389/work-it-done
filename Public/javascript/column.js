@@ -1,7 +1,6 @@
 // Create new column
 // Button activation
 $('.new-column-column').on('click', 'button', event => {
-  console.log('triggered', event.target);
   const projectId = $(event.target).attr('id').replace('column-project-', '');
   const textInput = $('<input>')
     .addClass()
@@ -43,12 +42,12 @@ $('.new-column-column').on('blur', 'input', async event => {
 // Edit column name
 $('.column-wrapper').on('click', 'h4', function () {
   const columnName = $(this).text().trim();
-  const textInput = $('<input>').attr('type', 'text').val(columnName);
+  const textInput = $('<input>').attr({type: 'text', id: 'column-name-edit'}).val(columnName);
   $(this).replaceWith(textInput);
   textInput.trigger('focus');
 });
 
-$('.column-wrapper').on('blur', 'input', async function (event) {
+$('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
   event.stopPropagation();
   const columnName = $(this).val().trim();
   const columnId = $(this).closest('.column-wrapper').attr('id').replace('column-', '');
@@ -68,7 +67,7 @@ $('.column-wrapper').on('blur', 'input', async function (event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    // alert(response.statusText);
+    alert(response.statusText);
   }
 
   const nameElement = $('<h4>').text(columnName);

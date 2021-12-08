@@ -18,6 +18,9 @@ Columns.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1],
+      },
     },
     project_id: {
       type: DataTypes.INTEGER,

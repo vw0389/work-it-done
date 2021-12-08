@@ -1,31 +1,3 @@
-$('#project-list').sortable({
-  items: 'li:not(.not-sortable)',
-});
-
-$('#tabs')
-  .tabs({collapsible: true, active: false, heightStyle: 'content'})
-  .addClass('ui-tabs-vertical ui-helper-clearfix');
-$('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
-
-// Make columns sortable
-$('.column-container').sortable();
-
-// Make cards sortable
-$('.column')
-  .sortable({
-    connectWith: '.column',
-    placeHolder: 'ui-state-highlight',
-    items: 'li:not(.not-sortable)',
-  })
-  .disableSelection();
-
-// Make cards toggleable
-$('.card-toggle').accordion({collapsible: true, active: false, heightStyle: 'content'});
-
-$('#login-button').on('click', () => {
-  window.location.replace('/workspace');
-});
-
 // Edit Project Name
 $('.project-name').on('click', 'h3', function () {
   const projectName = $(this).text().trim();

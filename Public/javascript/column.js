@@ -1,26 +1,31 @@
 // Create new column
 // Button activation
-$('.new-column-button').on('click', () => {
-  console.log('clicked');
+$('.new-column-column').on('click', 'button', event => {
+  console.log('triggered', event.target);
+  const projectId = $(event.target).attr('id').replace('column-project-', '');
+  const textInput = $('<input>')
+    .addClass()
+    .attr({id: 'new-column-name', placeholder: 'Column Name', 'data-project-id': projectId});
 
-  const textInput = $('<input>').addClass().attr('id', 'new-column-name').attr('placeholder', 'Column Name');
-
-  $('.new-column-button').replaceWith(textInput);
+  $(event.target).replaceWith(textInput);
   $('#new-column-name').trigger('focus');
 });
 
 // Enter name and send to database
-$('#new-column-name').on('blur', 'input', async () => {
-  const projectName = $('#new-column-name').val().trim();
-  console.log(projectName);
+$('.new-column-column').on('blur', 'input', async event => {
+  const columnName = $('#new-column-name').val().trim();
+  const projectId = $('#new-column-name').attr('data-project-id');
+  console.log(columnName, projectId);
 
-  if (!projectName) {
-    document.location.reload();
+  if (!columnName) {
+    console.log('no name');
+    $('#new-column-name').attr('placeHolder', 'The column needs a name');
   } else {
-    const response = await fetch('/api/projects', {
+    const response = await fetch('/api/columns', {
       method: 'POST',
       body: JSON.stringify({
-        name: projectName,
+        name: columnName,
+        project_id: projectId,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -43,29 +48,30 @@ $('.column-wrapper').on('click', 'h4', function () {
   textInput.trigger('focus');
 });
 
-// $('.column-wrapper').on('blur', 'input', async function (event) {
-//   event.stopPropagation();
-//   const columnName = $(this).val().trim();
-//   const columnId = $(this).closest('.column-wrapper').attr('id').replaceWith('column-', '');
+$('.column-wrapper').on('blur', 'input', async function (event) {
+  event.stopPropagation();
+  const columnName = $(this).val().trim();
+  const columnId = $(this).closest('.column-wrapper').attr('id').replace('column-', '');
 
-//   const response = await fetch(`/api/columns/${columnId}`, {
-//     method: 'PUT',
-//     body: JSON.stringify({
-//       columnId,
-//       columnName,
-//     }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
+  console.log(columnName, columnId);
+  const response = await fetch(`/api/columns/${columnId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      id: columnId,
+      name: columnName,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
-//   if (response.ok) {
-//     document.location.reload();
-//   } else {
-//     // alert(response.statusText);
-//   }
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    // alert(response.statusText);
+  }
 
-//   const nameElement = $('<h4>').text(columnName);
+  const nameElement = $('<h4>').text(columnName);
 
-//   $(this).replaceWith(nameElement);
-// });
+  $(this).replaceWith(nameElement);
+});

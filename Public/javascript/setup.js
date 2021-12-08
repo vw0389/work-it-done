@@ -25,3 +25,14 @@ $('.card-toggle').accordion({collapsible: true, active: false, heightStyle: 'con
 $('#login-button').on('click', () => {
   window.location.replace('/workspace');
 });
+
+$('#trash').droppable({
+  accept: '.column-wrapper .card .project-tab',
+  tolerance: 'touch',
+  drop: () => {
+    // Delete functionality
+  },
+  over: () => {
+    $('#trash').addClass('trash-active');
+  },
+});

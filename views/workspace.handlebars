@@ -14,7 +14,10 @@
         </li>
       {{/each}}
 
-      <li class='not-sortable ui-sortable-handle ui-tabs-tab ui-state-default ui-tab ui-corner-left'>
+      <li
+        id='new-project-tab'
+        class='not-sortable ui-sortable-handle ui-tabs-tab ui-state-default ui-tab ui-corner-left'
+      >
         <button id='new-project-button' class='project-tab not-sortable'>Create new project</button>
       </li>
 
@@ -39,10 +42,7 @@
                   {{#each cards}}
                     <li class='card'>
                       <div id='card-{{id}}' class='card-toggle'>
-                        {{! <div class='flex-row'> }}
                         <h5 class='card-name'>{{name}}</h5>
-                        {{! <i class='ui-icon ui-icon-pencil'></i> }}
-                        {{! </div> }}
 
                         <div>
                           <p class='card-text'>{{text}}</p>
@@ -54,23 +54,30 @@
                 <button type='button' class='not-sortable'>Add Card</button>
               </div>
             {{/each}}
-            <div class='column-wrapper'>
 
-              <button class='new-column-button'>Add Column</button>
+            <div class='column-wrapper new-column-column'>
+
+              <button id='column-project-{{id}}' class='new-column-button'>Add Column</button>
+
             </div>
+
           </div>
         </div>
       {{/each}}
     </div>
   </div>
 </div>
+<div id='trash'>
+  <span>
+    Drop Project, Column, Or Card Here To Delete
+  </span>
+</div>
 
 <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
 <script src='https://code.jquery.com/ui/1.13.0/jquery-ui.js'></script>
 
-<script type='text/javascript' src='/javascript/workspace.js'></script>
 <script type='text/javascript' src='/javascript/logout.js'></script>
 <script type='text/javascript' src='/javascript/setup.js'></script>
-<script type='text/javascript' src='/javascript/project.js'></script>
 <script type='text/javascript' src='/javascript/column.js'></script>
+<script type='text/javascript' src='/javascript/project.js'></script>
 <script type='text/javascript' src='/javascript/card.js'></script>

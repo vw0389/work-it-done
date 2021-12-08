@@ -849,6 +849,7 @@ button.ui-button::-moz-focus-inner {
   float: left;
   padding: 0.5em 1em;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,

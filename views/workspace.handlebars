@@ -6,13 +6,14 @@
     <ul id='project-list'>
       <li class='not-sortable'>
         <h3>Project List</h3>
-
       </li>
+
       {{#each projects}}
         <li>
           <a href='#project-{{id}}' class='project-tab'>{{name}}</a>
         </li>
       {{/each}}
+
       <li class='not-sortable ui-sortable-handle ui-tabs-tab ui-state-default ui-tab ui-corner-left'>
         <button id='new-project-button' class='project-tab not-sortable'>Create new project</button>
       </li>
@@ -72,3 +73,4 @@
 <script src='https://code.jquery.com/ui/1.13.0/jquery-ui.js'></script>
 
 <script type='text/javascript' src='/javascript/workspace.js'></script>
+<script type='text/javascript' src='/javascript/logout.js'></script>

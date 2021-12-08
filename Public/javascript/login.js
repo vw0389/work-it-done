@@ -32,7 +32,7 @@ const registerFormHandler = async event => {
   console.log('register', email, password);
 
   if (email && password) {
-    const response = await fetch('/api/users', {
+    const response = await fetch('/register', {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -40,7 +40,7 @@ const registerFormHandler = async event => {
       }),
       headers: {'Content-Type': 'application/json'},
     });
-
+    
     if (response.ok) {
       document.location.replace('/workspace');
     } else {

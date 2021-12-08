@@ -39,7 +39,7 @@ router.post('/register', (req, res) => {
             Users.create({
                 email: req.body.email,
                 password: req.body.password
-            }).then(() => {
+            }).then(User => {
                 req.session.save(() => {
                     // declare session variables
                     req.session.user_id = User.id;

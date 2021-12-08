@@ -1,43 +1,75 @@
-// Edit card name
-$('.ui-icon-pencil').on('click', 'i', function () {
-  console.log('clicked');
-  const cardNameEl = $(this).previous('h5');
-  const cardName = $(cardNameEl).text().trim();
-  const textInput = $('<input>').attr('type', 'text').val(cardName);
-  $(cardNameEl).replaceWith(textInput);
-  textInput.trigger('focus');
+// Create new card
+// Button activation
+$('.add-card-button').on('click', event => {
+  const columnId = $(event.target).attr('id');
+  const textInput = $('<input>')
+    .addClass()
+    .attr({id: 'add-card-input', placeholder: 'Card Name', 'data-column-id': columnId});
+  $(event.target).replaceWith(textInput);
+  $('#add-card-input').trigger('focus');
 });
 
-$('.card-toggle').on('blur', 'input', async function (event) {
-  event.stopPropagation();
-  const cardName = $(this).val().trim();
-  const cardId = $(this).closest('.card-toggle').attr('id').replace('card-', '');
+// Enter name and send to database
+$('.column-wrapper').on('blur', '#add-card-input', async event => {
+  const cardName = $('#add-card-input').val().trim();
+  const columnId = $('#add-card-input').attr('data-column-id');
+  console.log(cardName, columnId);
 
-  const response = await fetch(`/api/cards/${cardId}`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      cardId,
-      cardName,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  if (response.ok) {
-    document.location.reload();
+  if (!cardName) {
+    console.log('no card name');
+    $('#new-column-name').attr('placeHolder', 'The column needs a name');
   } else {
-    // alert(response.statusText);
+    const response = await fetch('/api/cards', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: cardName,
+        column_id: columnId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      console.log(response);
+    }
   }
-
-  const nameElement = $('<h5>')
-    .html(``)
-    .text(cardName)
-    .addClass(
-      'card-name ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons'
-    );
-
-  $(this).replaceWith(nameElement);
 });
 
-// Edit card information
+// // Edit column name
+// $('.column-wrapper').on('click', 'h4', function () {
+//   const columnName = $(this).text().trim();
+//   const textInput = $('<input>').attr({type: 'text', id: 'column-name-edit'}).val(columnName);
+//   $(this).replaceWith(textInput);
+//   textInput.trigger('focus');
+// });
+
+// $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
+//   event.stopPropagation();
+//   const columnName = $(this).val().trim();
+//   const columnId = $(this).closest('.column-wrapper').attr('id').replace('column-', '');
+
+//   console.log(columnName, columnId);
+//   const response = await fetch(`/api/columns/${columnId}`, {
+//     method: 'PUT',
+//     body: JSON.stringify({
+//       id: columnId,
+//       name: columnName,
+//     }),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
+
+//   if (response.ok) {
+//     document.location.reload();
+//   } else {
+//     alert(response.statusText);
+//   }
+
+//   const nameElement = $('<h4>').text(columnName);
+
+//   $(this).replaceWith(nameElement);
+// });

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Projects, Columns, Cards } = require('../../models');
+const {Projects, Columns, Cards} = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: cards: name, text, FK(column_id)
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // get card by id ---WORKING
@@ -20,19 +20,19 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  }).then(dbPostData => {
-    console.log(dbPostData);
-    if (!dbPostData) {
-      res.status(404)
-        .json({ message: 'There was no card found with this id.' });
-      return;
-    }
-    res.json(dbPostData)
   })
+    .then(dbPostData => {
+      console.log(dbPostData);
+      if (!dbPostData) {
+        res.status(404).json({message: 'There was no card found with this id.'});
+        return;
+      }
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // get all cards for a column  ---NOT WORKING
@@ -41,11 +41,12 @@ router.get('/:columnId', (req, res) => {
     where: {
       column_id: req.params.columnId,
     },
-  }).then(dbPostData => res.json(dbPostData))
+  })
+    .then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // post add cards to column  ---WORKING
@@ -53,13 +54,13 @@ router.post('/', (req, res) => {
   console.log(req.body);
   Cards.create({
     name: req.body.name,
-    text: req.body.text,
     column_id: req.body.column_id,
-  }).then(dbPostData => res.json(dbPostData))
+  })
+    .then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // put update card  ---WORKING
@@ -68,20 +69,19 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  }
-  ).then(dbPostData => {
-    if (!dbPostData[0]) {
-      res.status(404)
-        .json({ message: 'There was no card found with this id.' });
-      return;
-    }
-    console.log(dbPostData[0])
-    res.json(dbPostData)
   })
+    .then(dbPostData => {
+      if (!dbPostData[0]) {
+        res.status(404).json({message: 'There was no card found with this id.'});
+        return;
+      }
+      console.log(dbPostData[0]);
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // delete a card  ---WORKING
@@ -90,19 +90,18 @@ router.delete('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  }
-  ).then(dbPostData => {
-    if (!dbPostData) {
-      res.status(404)
-        .json({ message: 'There was no card found with this id.' });
-      return;
-    }
-    res.json(dbPostData)
   })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({message: 'There was no card found with this id.'});
+        return;
+      }
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
-})
+    });
+});
 
 module.exports = router;

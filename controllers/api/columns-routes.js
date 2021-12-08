@@ -69,4 +69,24 @@ router.put('/:id', (req, res) => {
     })
 });
 
+// Delete a column  ---NOt WORKING
+router.delete('/:id', (req, res) => {
+  Columns.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({message: 'There was no column found with this id.'});
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;

@@ -3,6 +3,7 @@ const {Projects, Cards, Columns, Users} = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: projects: name
+
 // get all projects for a user  ---WORKING
 router.get('/:userId', (req, res) => {
   Projects.findAll({

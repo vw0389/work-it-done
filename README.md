@@ -60,7 +60,7 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 
 * **Victor Weinert** - project management (role assignments, scheduling, bug fixes), schema design, seeds, routes, password encryption, Heroku deployment
 * **Patrick Sebstead** - RESTful API design (routes), README
-* **TJ James** - front end mock up, html, css, Handlebars templates, bug fixes
+* **TJ James** - front end mock up, HTML, CSS, JS, Handlebars templates, bug fixes
 * **Lauren Groh** - ORM design (models & associations, password encryption), README, PowerPoint slideshow
 
 ## Questions

@@ -80,6 +80,30 @@ $('.card-toggle').on('click', '#card-save-button', async function (event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    // alert(response.statusText);
+    console.log(response.statusText);
   }
 });
+
+// Change card column
+const updateCardColumn = async (event, ui) => {
+  const cardId = $(ui.item[0]).children('.card-toggle').attr('id').replace('card-', '');
+  const columnId = $(ui.item[0]).closest('.column-wrapper').attr('id').replace('column-', '');
+  console.log(cardId, columnId, ui);
+
+  const response = await fetch(`/api/cards/`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      id: cardId,
+      column_id: columnId,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    console.log(response.statusText);
+  }
+};

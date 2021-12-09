@@ -64,10 +64,10 @@ router.post('/', (req, res) => {
 });
 
 // put update card  ---WORKING
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
   Cards.update(req.body, {
     where: {
-      id: req.params.id,
+      id: req.body.id,
     },
   })
     .then(dbPostData => {

@@ -22,12 +22,6 @@ Cards.init(
     text: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: {
-          args: [5, 200],
-          msg: 'Please provide a description between 5 and 200 characters',
-        },
-      },
     },
     column_id: {
       type: DataTypes.INTEGER,

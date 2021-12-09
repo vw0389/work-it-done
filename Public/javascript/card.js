@@ -17,7 +17,7 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
 
   if (!cardName) {
     console.log('no card name');
-    $('#new-column-name').attr('placeHolder', 'The column needs a name');
+    $('#new-column-name').attr('placeHolder', 'The card needs a name');
   } else {
     const response = await fetch('/api/cards', {
       method: 'POST',
@@ -38,38 +38,48 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
   }
 });
 
-// // Edit column name
-// $('.column-wrapper').on('click', 'h4', function () {
-//   const columnName = $(this).text().trim();
-//   const textInput = $('<input>').attr({type: 'text', id: 'column-name-edit'}).val(columnName);
-//   $(this).replaceWith(textInput);
-//   textInput.trigger('focus');
-// });
+// Edit card name
+$('.card-body').on('click', '.edit-card-button', event => {
+  console.log(event.target);
+  const nameEl = $(event.target).closest('.card-toggle').children('h5');
+  const cardName = nameEl.text().trim();
+  const nameInput = $('<input>').attr('class', 'card-name-input').addClass('card-name ').val(cardName);
+  nameEl.replaceWith(nameInput);
 
-// $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
-//   event.stopPropagation();
-//   const columnName = $(this).val().trim();
-//   const columnId = $(this).closest('.column-wrapper').attr('id').replace('column-', '');
+  const textEl = $(event.target).siblings('.card-text');
+  const cardText = textEl.text().trim();
+  const textInput = $('<textarea>').attr('class', 'card-text-input').val(cardText);
+  textEl.replaceWith(textInput);
 
-//   console.log(columnName, columnId);
-//   const response = await fetch(`/api/columns/${columnId}`, {
-//     method: 'PUT',
-//     body: JSON.stringify({
-//       id: columnId,
-//       name: columnName,
-//     }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
+  const editButton = $(event.target);
+  const saveButton = $('<button>').text('Save Card').attr('id', 'card-save-button');
+  editButton.replaceWith(saveButton);
+  console.log(cardName, cardText);
+});
 
-//   if (response.ok) {
-//     document.location.reload();
-//   } else {
-//     alert(response.statusText);
-//   }
+$('.card-toggle').on('click', '#card-save-button', async function (event) {
+  console.log(event.target);
+  const cardName = $(event.target).closest('.card-toggle').children('.card-name-input').val().trim();
+  const cardText = $(event.target).siblings('textarea').val().trim();
+  const cardId = $(event.target).closest('.card-toggle').attr('id').replace('card-', '');
 
-//   const nameElement = $('<h4>').text(columnName);
+  console.log(cardName, cardText, cardId);
 
-//   $(this).replaceWith(nameElement);
-// });
+  const response = await fetch(`/api/cards/`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      id: cardId,
+      name: cardName,
+      text: cardText,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    // alert(response.statusText);
+  }
+});

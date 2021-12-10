@@ -22,7 +22,7 @@ router.get('/:userId', (req, res) => {
     },
   })
     .then(dbPostData => {
-      if (!dbPostData[0]) {
+      if (!dbPostData) {
         res.status(404).json({message: 'There was no project found with this id.'});
         return;
       }
@@ -38,7 +38,6 @@ router.get('/:userId', (req, res) => {
 router.post('/', (req, res) => {
   Projects.create({
     name: req.body.name,
-    user_id: req.session.user_id,
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -53,13 +52,22 @@ router.put('/', (req, res) => {
     where: {
       id: req.body.id,
     },
+  }
+  ).then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404)
+        .json({ message: 'There was no project found with this id.' });
+      return;
+    }
+    console.log(dbPostData)
+    res.json(dbPostData)
   })
     .then(dbPostData => {
-      if (!dbPostData[0]) {
+      if (!dbPostData) {
         res.status(404).json({message: 'There was no project found with this id.'});
         return;
       }
-      console.log(dbPostData[0]);
+      console.log(dbPostData);
       res.json(dbPostData);
     })
     .catch(err => {

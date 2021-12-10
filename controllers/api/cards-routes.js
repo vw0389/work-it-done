@@ -37,12 +37,13 @@ router.get('/:id', (req, res) => {
 
 // get all cards for a column  ---NOT WORKING
 router.get('/:columnId', (req, res) => {
+  console.log('coulumn id !!!!!!!!!!!!', req.params.columnId)
   Cards.findAll({
     where: {
       column_id: req.params.columnId,
     },
-  })
-    .then(dbPostData => res.json(dbPostData))
+   // include: [{model: Cards}]
+  }).then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -71,11 +72,11 @@ router.put('/', (req, res) => {
     },
   })
     .then(dbPostData => {
-      if (!dbPostData[0]) {
+      if (!dbPostData) {
         res.status(404).json({message: 'There was no card found with this id.'});
         return;
       }
-      console.log(dbPostData[0]);
+      console.log(dbPostData);
       res.json(dbPostData);
     })
     .catch(err => {

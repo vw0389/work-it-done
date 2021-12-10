@@ -37,10 +37,12 @@ router.get('/:id', (req, res) => {
 
 // get all cards for a column  ---NOT WORKING
 router.get('/:columnId', (req, res) => {
+  console.log('coulumn id !!!!!!!!!!!!', req.params.columnId)
   Cards.findAll({
     where: {
       column_id: req.params.columnId,
     },
+   // include: [{model: Cards}]
   }).then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);

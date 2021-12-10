@@ -15,17 +15,25 @@ Users.hasMany(Projects, {
 });
 
 // Columns belongsTo Projects
-Columns.belongsTo(Projects, {});
+Columns.belongsTo(Projects, {
+
+});
 
 // Projects hasMany Columns
-Projects.hasMany(Columns, {});
+Projects.hasMany(Columns, {
+  foreignKey: 'user_id',
+});
 
 
 // Cards belongsTo Columns
-Cards.belongsTo(Columns, {});
+Cards.belongsTo(Columns, {
+  foreignKey: 'column_id',
+});
 
 // Columns hasMany Cards
-Columns.hasMany(Cards, {});
+Columns.hasMany(Cards, {
+  foreignKey: 'column_id',
+});
 
 
 module.exports = {

@@ -4,6 +4,9 @@
   --pastel-green: #5cdb95; /* Consider off-white */
   --algae-green: #8ee4af;
   --loafer: #edf5e1;
+  --gold-metallic: #DBB957;
+  --chinese-violet: #8E6C88;
+  --almond: #DCCCBC;
 }
 
 * {
@@ -38,10 +41,13 @@ h1 {
 
 h2 {
   font-size: 3rem;
+  color: var(--almond);
+  font-family: 'Lora', serif;
 }
 
 h3 {
   font-size: 2rem;
+  margin-top: 20px;
 }
 
 h4,
@@ -103,6 +109,7 @@ ul {
   max-width: 60%;
   padding: 2rem;
   margin-left: 7rem;
+  color: var(--almond);
 }
 
 #login-section {

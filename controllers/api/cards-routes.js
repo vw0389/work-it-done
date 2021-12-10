@@ -70,12 +70,12 @@ router.put('/:id', (req, res) => {
     },
   }
   ).then(dbPostData => {
-    if (!dbPostData[0]) {
+    if (!dbPostData) {
       res.status(404)
         .json({ message: 'There was no card found with this id.' });
       return;
     }
-    console.log(dbPostData[0])
+    console.log(dbPostData)
     res.json(dbPostData)
   })
     .catch(err => {

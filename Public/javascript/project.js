@@ -40,14 +40,13 @@ $('.project-name').on('click', 'h3', function () {
   const projectName = $(this).text().trim();
   const textInput = $('<input>').attr('type', 'text').addClass('project-name').val(projectName);
   $(this).replaceWith(textInput);
-  textInput.trigger('focus');
+  textInput.trigger('focus');  
 });
 
-$('.project-name').on('blur', 'input', async function () {
+$('.project-name').on('blur', 'input', async function () {  
   const projectName = $(this).val().trim();
-  const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
-
-  const response = await fetch(`/api/projects/${projectId}`, {
+  const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');  
+  const response = await fetch(`/api/projects/${projectId}`, {    
     method: 'PUT',
     body: JSON.stringify({
       projectId,
@@ -57,7 +56,6 @@ $('.project-name').on('blur', 'input', async function () {
       'Content-Type': 'application/json',
     },
   });
-
   if (response.ok) {
     document.location.reload();
   } else {
@@ -65,6 +63,5 @@ $('.project-name').on('blur', 'input', async function () {
   }
 
   const nameElement = $('<h3>').text(projectName);
-
   $(this).replaceWith(nameElement);
 });

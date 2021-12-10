@@ -38,7 +38,6 @@ router.get('/:userId', (req, res) => {
 router.post('/', (req, res) => {
   Projects.create({
     name: req.body.name,
-    user_id: req.session.user_id,
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {

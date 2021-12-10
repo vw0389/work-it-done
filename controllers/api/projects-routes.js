@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
 });
 
 // put update project data   ---WORKING
-router.put('/:id', (req, res) => {
+router.put('/:projectId', (req, res) => {
   Projects.update(req.body, {
     where: {
       id: req.params.id,

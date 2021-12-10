@@ -31,7 +31,7 @@ const { Validator } = require('node-input-validator');
 //     });
 // });
 
-router.post('/logins', (req, res) => {
+router.post('/login', (req, res) => {
     const v = new Validator(req.body, {
         email: 'required|email',
         password: 'required'

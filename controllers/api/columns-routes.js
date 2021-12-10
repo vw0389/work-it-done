@@ -20,6 +20,19 @@ router.get('/:projectId', (req, res) => {
     where: {
       project_id: req.params.projectId,
     },
+<<<<<<< HEAD
+=======
+  }).then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404)
+        .json({ message: 'There was no column found with this id.' });
+      return;
+    }
+    res.json(dbPostData)
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+>>>>>>> psdevelop
   })
     .then(dbPostData => {
       if (!dbPostData[0]) {
@@ -39,9 +52,14 @@ router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
     name: req.body.name,
+<<<<<<< HEAD
     project_id: req.body.project_id,
   })
     .then(dbPostData => res.json(dbPostData))
+=======
+  }).then(dbPostData =>
+    res.json(dbPostData))
+>>>>>>> psdevelop
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -54,6 +72,18 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
+<<<<<<< HEAD
+=======
+  }
+  ).then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404)
+        .json({ message: 'There was no column found with this id.' });
+      return;
+    }
+    console.log(dbPostData)
+    res.json(dbPostData)
+>>>>>>> psdevelop
   })
     .then(dbPostData => {
       if (!dbPostData[0]) {

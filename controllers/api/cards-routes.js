@@ -70,6 +70,18 @@ router.put('/', (req, res) => {
     where: {
       id: req.body.id,
     },
+<<<<<<< HEAD
+=======
+  }
+  ).then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404)
+        .json({ message: 'There was no card found with this id.' });
+      return;
+    }
+    console.log(dbPostData)
+    res.json(dbPostData)
+>>>>>>> psdevelop
   })
     .then(dbPostData => {
       if (!dbPostData[0]) {

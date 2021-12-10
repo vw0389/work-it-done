@@ -133,6 +133,7 @@ ul {
 .project-workspace {
   background-color: var(--lochinvar);
   flex-grow: 1;
+  height: 95%;
 }
 #tabs {
   display: flex;

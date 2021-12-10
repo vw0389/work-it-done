@@ -17,7 +17,6 @@ $('.new-column-column').on('blur', 'input', async event => {
   console.log(columnName, projectId);
 
   if (!columnName) {
-    console.log('no name');
     $('#new-column-name').attr('placeHolder', 'The column needs a name');
   } else {
     const response = await fetch('/api/columns', {
@@ -32,7 +31,7 @@ $('.new-column-column').on('blur', 'input', async event => {
     });
 
     if (response.ok) {
-      document.location.reload();
+      // document.location.reload();
     } else {
       console.log(response);
     }
@@ -65,7 +64,7 @@ $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
   });
 
   if (response.ok) {
-    document.location.reload();
+    // document.location.reload();
   } else {
     alert(response.statusText);
   }

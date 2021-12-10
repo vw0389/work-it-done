@@ -2,7 +2,7 @@
 // Button activation
 $('#new-project-button').on('click', () => {
   const textInput = $('<input>')
-    .addClass('project-tab ui-tabs-anchor')
+    .addClass('ui-tabs-anchor')
     .attr('id', 'new-project-name')
     .attr('placeholder', 'Project Name');
 

@@ -1,5 +1,6 @@
-$('#project-list').sortable({
+$('.project-tab').draggable({
   items: 'li:not(.not-sortable)',
+  revert: 'invalid',
 });
 
 $('#tabs')
@@ -8,7 +9,7 @@ $('#tabs')
 $('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
 
 // // Make columns sortable
-// $('.column-container').sortable();
+$('.column-wrapper').draggable({revert: 'invalid', containment: 'window'});
 
 // Make cards sortable
 $('.column').sortable({
@@ -27,7 +28,7 @@ $('#login-button').on('click', () => {
 });
 
 $('#trash').droppable({
-  accept: '.column-wrapper .card .project-tab',
+  accept: '.column-wrapper .card .project-tab1',
   tolerance: 'touch',
   drop: () => {
     // Delete functionality

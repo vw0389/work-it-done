@@ -1,26 +1,29 @@
 // Create new column
 // Button activation
-$('.new-column-button').on('click', () => {
-  console.log('clicked');
+$('.new-column-column').on('click', 'button', event => {
+  const projectId = $(event.target).attr('id').replace('column-project-', '');
+  const textInput = $('<input>')
+    .addClass()
+    .attr({id: 'new-column-name', placeholder: 'Column Name', 'data-project-id': projectId});
 
-  const textInput = $('<input>').addClass().attr('id', 'new-column-name').attr('placeholder', 'Column Name');
-
-  $('.new-column-button').replaceWith(textInput);
+  $(event.target).replaceWith(textInput);
   $('#new-column-name').trigger('focus');
 });
 
 // Enter name and send to database
-$('#new-column-name').on('blur', 'input', async () => {
-  const projectName = $('#new-column-name').val().trim();
-  console.log(projectName);
+$('.new-column-column').on('blur', 'input', async event => {
+  const columnName = $('#new-column-name').val().trim();
+  const projectId = $('#new-column-name').attr('data-project-id');
+  console.log(columnName, projectId);
 
-  if (!projectName) {
-    document.location.reload();
+  if (!columnName) {
+    $('#new-column-name').attr('placeHolder', 'The column needs a name');
   } else {
-    const response = await fetch('/api/projects', {
+    const response = await fetch('/api/columns', {
       method: 'POST',
       body: JSON.stringify({
-        name: projectName,
+        name: columnName,
+        project_id: projectId,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +31,7 @@ $('#new-column-name').on('blur', 'input', async () => {
     });
 
     if (response.ok) {
-      document.location.reload();
+      // document.location.reload();
     } else {
       console.log(response);
     }
@@ -38,34 +41,35 @@ $('#new-column-name').on('blur', 'input', async () => {
 // Edit column name
 $('.column-wrapper').on('click', 'h4', function () {
   const columnName = $(this).text().trim();
-  const textInput = $('<input>').attr('type', 'text').val(columnName);
+  const textInput = $('<input>').attr({type: 'text', id: 'column-name-edit'}).val(columnName);
   $(this).replaceWith(textInput);
   textInput.trigger('focus');
 });
 
-// $('.column-wrapper').on('blur', 'input', async function (event) {
-//   event.stopPropagation();
-//   const columnName = $(this).val().trim();
-//   const columnId = $(this).closest('.column-wrapper').attr('id').replaceWith('column-', '');
+$('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
+  event.stopPropagation();
+  const columnName = $(this).val().trim();
+  const columnId = $(this).closest('.column-wrapper').attr('id').replace('column-', '');
 
-//   const response = await fetch(`/api/columns/${columnId}`, {
-//     method: 'PUT',
-//     body: JSON.stringify({
-//       columnId,
-//       columnName,
-//     }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
+  console.log(columnName, columnId);
+  const response = await fetch(`/api/columns/${columnId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      id: columnId,
+      name: columnName,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
-//   if (response.ok) {
-//     document.location.reload();
-//   } else {
-//     // alert(response.statusText);
-//   }
+  if (response.ok) {
+    // document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
 
-//   const nameElement = $('<h4>').text(columnName);
+  const nameElement = $('<h4>').text(columnName);
 
-//   $(this).replaceWith(nameElement);
-// });
+  $(this).replaceWith(nameElement);
+});

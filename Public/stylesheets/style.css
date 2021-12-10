@@ -133,6 +133,7 @@ ul {
 .project-workspace {
   background-color: var(--lochinvar);
   flex-grow: 1;
+  height: 95%;
 }
 #tabs {
   display: flex;
@@ -249,4 +250,16 @@ ul {
 
 .ui-accordion-content-active {
   height: 100%;
+}
+
+#trash {
+  background-color: var(--loafer);
+  color: var(--catalina-blue);
+
+  height: 10%;
+}
+
+.trash-active {
+  background-color: var(--catalina-blue);
+  color: var(--loafer);
 }

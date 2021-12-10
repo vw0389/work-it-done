@@ -7,11 +7,11 @@ const sequelize = require('../../config/connection');
 // get all projects
 router.get('/', (req, res) =>
   Projects.findAll()
-    .then(dbPostData =>
-      res.json(dbPostData)).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 );
 
 // get all projects for a user  ---WORKING
@@ -22,7 +22,7 @@ router.get('/:userId', (req, res) => {
     },
   })
     .then(dbPostData => {
-      if (!dbPostData[0]) {
+      if (!dbPostData) {
         res.status(404).json({message: 'There was no project found with this id.'});
         return;
       }
@@ -38,7 +38,6 @@ router.get('/:userId', (req, res) => {
 router.post('/', (req, res) => {
   Projects.create({
     name: req.body.name,
-    user_id: req.session.user_id,
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -48,25 +47,33 @@ router.post('/', (req, res) => {
 });
 
 // put update project data   ---WORKING
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
   Projects.update(req.body, {
     where: {
-      id: req.params.id,
+      id: req.body.id,
     },
   }
   ).then(dbPostData => {
-    if (!dbPostData[0]) {
+    if (!dbPostData) {
       res.status(404)
         .json({ message: 'There was no project found with this id.' });
       return;
     }
-    console.log(dbPostData[0])
+    console.log(dbPostData)
     res.json(dbPostData)
   })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({message: 'There was no project found with this id.'});
+        return;
+      }
+      console.log(dbPostData);
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // Delete a project  ---WORKING

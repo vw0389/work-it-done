@@ -55,6 +55,7 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
  * JavaScript
  * HTML
  * CSS
+ * node-input-validator
 
 ## Contributions
 

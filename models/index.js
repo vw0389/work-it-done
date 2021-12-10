@@ -27,12 +27,12 @@ Projects.hasMany(Columns, {
 
 // Cards belongsTo Columns
 Cards.belongsTo(Columns, {
-  foreignKey: 'column_id',
+  
 });
 
 // Columns hasMany Cards
 Columns.hasMany(Cards, {
-  foreignKey: 'column_id',
+ 
 });
 
 

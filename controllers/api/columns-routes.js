@@ -12,7 +12,7 @@ router.get('/', (req, res) =>
         console.log(err);
         res.status(500).json(err);
       })
-)
+);
 
 // get all columns for a project ---WORKING
 router.get('/:projectId', (req, res) => {
@@ -67,6 +67,26 @@ router.put('/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     })
+});
+
+// Delete a column  ---NOt WORKING
+router.delete('/:id', (req, res) => {
+  Columns.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({message: 'There was no column found with this id.'});
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

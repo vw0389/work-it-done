@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Projects, Columns, Cards } = require('../../models');
 const sequelize = require('../../config/connection');
-// const withAuth = require('../../utils/auth');
 
 // model: cards: name, text, FK(column_id)
 
@@ -63,7 +62,7 @@ router.post('/', (req, res) => {
     })
 });
 
-// put update move card between columns  ---WORKING
+// put update card  ---WORKING
 router.put('/:id', (req, res) => {
   Cards.update(req.body, {
     where: {

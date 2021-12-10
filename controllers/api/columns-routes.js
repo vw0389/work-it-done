@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Projects, Cards, Columns } = require('../../models');
+const {Projects, Cards, Columns} = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: columns: name, FK(project_id)
@@ -7,11 +7,11 @@ const sequelize = require('../../config/connection');
 // get all columns ---WORKING
 router.get('/', (req, res) =>
   Columns.findAll()
-    .then(dbPostData =>
-      res.json(dbPostData)).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 );
 
 // get all columns for a project ---WORKING
@@ -20,17 +20,18 @@ router.get('/:projectId', (req, res) => {
     where: {
       project_id: req.params.projectId,
     },
-  }).then(dbPostData => {
-    if (!dbPostData[0]) {
-      res.status(404)
-        .json({ message: 'There was no column found with this id.' });
-      return;
-    }
-    res.json(dbPostData)
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
   })
+    .then(dbPostData => {
+      if (!dbPostData[0]) {
+        res.status(404).json({message: 'There was no column found with this id.'});
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // post create new column   ---WORKING
@@ -38,13 +39,13 @@ router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
     name: req.body.name,
-    project_id: req.body.columnId,
-  }).then(dbPostData =>
-    res.json(dbPostData))
+    project_id: req.body.project_id,
+  })
+    .then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // put update columns within project   ---WORKING
@@ -53,20 +54,19 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  }
-  ).then(dbPostData => {
-    if (!dbPostData[0]) {
-      res.status(404)
-        .json({ message: 'There was no column found with this id.' });
-      return;
-    }
-    console.log(dbPostData[0])
-    res.json(dbPostData)
   })
+    .then(dbPostData => {
+      if (!dbPostData[0]) {
+        res.status(404).json({message: 'There was no column found with this id.'});
+        return;
+      }
+      console.log(dbPostData[0]);
+      res.json(dbPostData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    })
+    });
 });
 
 // Delete a column  ---NOt WORKING

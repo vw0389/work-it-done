@@ -13,7 +13,7 @@ router.get('/', (req, res) =>
       res.status(500).json(err);
     })
 );
-
+// 
 // get all columns for a project ---WORKING
 router.get('/:projectId', (req, res) => {
   Columns.findAll({
@@ -39,14 +39,8 @@ router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
     name: req.body.name,
-<<<<<<< HEAD
-    project_id: req.body.project_id,
-  })
-    .then(dbPostData => res.json(dbPostData))
-=======
   }).then(dbPostData =>
     res.json(dbPostData))
->>>>>>> psdevelop
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -59,8 +53,6 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-<<<<<<< HEAD
-=======
   }
   ).then(dbPostData => {
     if (!dbPostData) {
@@ -70,7 +62,6 @@ router.put('/:id', (req, res) => {
     }
     console.log(dbPostData)
     res.json(dbPostData)
->>>>>>> psdevelop
   })
     .then(dbPostData => {
       if (!dbPostData) {

@@ -20,22 +20,9 @@ router.get('/:projectId', (req, res) => {
     where: {
       project_id: req.params.projectId,
     },
-<<<<<<< HEAD
-=======
-  }).then(dbPostData => {
-    if (!dbPostData) {
-      res.status(404)
-        .json({ message: 'There was no column found with this id.' });
-      return;
-    }
-    res.json(dbPostData)
-  }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
->>>>>>> psdevelop
   })
     .then(dbPostData => {
-      if (!dbPostData[0]) {
+      if (!dbPostData) {
         res.status(404).json({message: 'There was no column found with this id.'});
         return;
       }
@@ -86,11 +73,11 @@ router.put('/:id', (req, res) => {
 >>>>>>> psdevelop
   })
     .then(dbPostData => {
-      if (!dbPostData[0]) {
+      if (!dbPostData) {
         res.status(404).json({message: 'There was no column found with this id.'});
         return;
       }
-      console.log(dbPostData[0]);
+      console.log(dbPostData);
       res.json(dbPostData);
     })
     .catch(err => {

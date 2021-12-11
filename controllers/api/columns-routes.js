@@ -14,8 +14,8 @@ router.get('/', (req, res) =>
       res.status(500).json(err);
     })
 );
-// 
-// get all columns for a project 
+
+// get all columns for a project ---WORKING
 router.get('/:projectId', (req, res) => {
   Columns.findAll({
     where: {
@@ -78,7 +78,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Delete a column  ---NOt WORKING
+// Delete a column  ---NOt WORKINGs
 router.delete('/:id', (req, res) => {
   Columns.destroy({
     where: {

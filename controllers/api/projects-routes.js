@@ -34,10 +34,12 @@ router.get('/:userId', (req, res) => {
     });
 });
 
+// ERROR STARTS HERE
 // post create a new project  ---WORKING
 router.post('/', (req, res) => {
   Projects.create({
     name: req.body.name,
+    // user_id: req.body.user_id,
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -45,6 +47,7 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+// ERROR ENDS HERE
 
 // put update project data   ---WORKING
 router.put('/:id', (req, res) => {

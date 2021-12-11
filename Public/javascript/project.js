@@ -11,14 +11,11 @@ $('#new-project-button').on('click', () => {
 });
 
 // Enter name and send to database
-
-// possible error starts here
 $('#new-project-tab').on('blur', '#new-project-name', async event => {
+  
   // event.stopPropagation();
-  console.log('new project');
   const projectName = $('#new-project-name').val().trim();
-
-//possible error ends here
+  console.log("line 17", projectName);
 
   if (!projectName) {
     document.location.reload();
@@ -27,6 +24,7 @@ $('#new-project-tab').on('blur', '#new-project-name', async event => {
       method: 'POST',
       body: JSON.stringify({
         name: projectName,
+        // user_id: req.body.user_id
       }),
       headers: {
         'Content-Type': 'application/json',

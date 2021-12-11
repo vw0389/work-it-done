@@ -1,11 +1,12 @@
 const router = require('express').Router();
-const {Projects, Cards, Columns} = require('../../models');
+const {Columns} = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: columns: name, FK(project_id)
 
-// get all columns ---WORKING
+// get all columns 
 router.get('/', (req, res) =>
+  
   Columns.findAll()
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -14,7 +15,7 @@ router.get('/', (req, res) =>
     })
 );
 // 
-// get all columns for a project ---WORKING
+// get all columns for a project 
 router.get('/:projectId', (req, res) => {
   Columns.findAll({
     where: {
@@ -34,7 +35,7 @@ router.get('/:projectId', (req, res) => {
     });
 });
 
-// post create new column   ---WORKING
+// post create new column   
 router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
@@ -47,7 +48,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// put update columns within project   ---WORKING
+// put update columns within project
 router.put('/:id', (req, res) => {
   Columns.update(req.body, {
     where: {

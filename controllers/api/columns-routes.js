@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Projects, Cards, Columns} = require('../../models');
+const {Projects, Cards, Columns, Users} = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: columns: name, FK(project_id)

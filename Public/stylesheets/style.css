@@ -112,12 +112,10 @@ ul {
   padding: 2rem;
   margin-left: 7rem;
   color: var(--almond);
-  line-height: 2.75em; 
 }
 .welcome-3 {
   font-weight: 400;
   font-style: italic;
-  line-height: 1.25em;
 }
 
 #login-section {

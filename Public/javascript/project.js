@@ -11,10 +11,14 @@ $('#new-project-button').on('click', () => {
 });
 
 // Enter name and send to database
+
+// possible error starts here
 $('#new-project-tab').on('blur', '#new-project-name', async event => {
   // event.stopPropagation();
   console.log('new project');
   const projectName = $('#new-project-name').val().trim();
+
+//possible error ends here
 
   if (!projectName) {
     document.location.reload();

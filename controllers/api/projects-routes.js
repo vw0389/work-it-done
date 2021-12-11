@@ -47,7 +47,9 @@ router.post('/', (req, res) => {
 });
 
 // put update project data   ---WORKING
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
+  
+  console.log("it's here,", req.body);
   Projects.update(req.body, {
     where: {
       id: req.body.id,
@@ -62,14 +64,6 @@ router.put('/', (req, res) => {
     console.log(dbPostData)
     res.json(dbPostData)
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({message: 'There was no project found with this id.'});
-        return;
-      }
-      console.log(dbPostData);
-      res.json(dbPostData);
-    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

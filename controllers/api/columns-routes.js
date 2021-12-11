@@ -39,6 +39,7 @@ router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
     name: req.body.name,
+    project_id: req.body.project_id
   }).then(dbPostData =>
     res.json(dbPostData))
     .catch(err => {

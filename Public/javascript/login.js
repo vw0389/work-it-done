@@ -4,6 +4,7 @@ const loginFormHandler = async event => {
   const email = $('#login-email').val().trim();
   const password = $('#login-password').val().trim();
   if (email && password) {
+    
     const response = await fetch('/login', {
       method: 'POST',
       body: JSON.stringify({
@@ -14,7 +15,6 @@ const loginFormHandler = async event => {
     });
     if (response.ok) {
       document.location.replace('/workspace');
-      
     }
   }
 };

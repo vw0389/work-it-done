@@ -27,6 +27,7 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'incorrect password' });
             return;
         }
+        
         req.session.save(() => {
             // declare session variables
             req.session.user_id = User.id;
@@ -36,6 +37,7 @@ router.post('/login', (req, res) => {
             delete User.dataValues.password;
             
             res.redirect('/workspace');
+            return;
         });
     });
 });
@@ -58,7 +60,7 @@ router.post('/register', (req, res) => {
                     req.session.email = User.email;
                     req.session.loggedIn = true;
                     delete User.dataValues.password;
-
+                    console.log("HELLO FUCK YOU");
                     res.redirect('/workspace');
                 });
             })

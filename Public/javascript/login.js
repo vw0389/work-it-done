@@ -12,6 +12,10 @@ const loginFormHandler = async event => {
       }),
       headers: {'Content-Type': 'application/json'},
     });
+    if (response.ok) {
+      document.location.replace('/workspace');
+      console.log("hi");
+    }
   }
 };
 
@@ -32,7 +36,9 @@ const registerFormHandler = async event => {
       }),
       headers: {'Content-Type': 'application/json'},
     });
-    
+    if (response.ok) {
+      document.location.replace('/workspace');
+    }
   }
 };
 $('#register-form').on('submit', registerFormHandler);

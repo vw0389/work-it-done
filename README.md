@@ -36,17 +36,17 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 
 ## Instructions 
 
-1. New users can register with email/password | 2. Returning users can log in with the same email/password
------------------------- | ------------------------
-![Work-It-Done register](./assets/images/register.png "register") | ![Work-It-Done login](./assets/images/login.png "login")
+| 1. New users can register with email/password | 2. Returning users can log in with the same email/password |
+| --- | --- |
+| ![Work-It-Done register](./assets/images/register.png "register") | ![Work-It-Done login](./assets/images/login.png "login") |
 
-3. Create a new project | 4. View, add, or update columns and cards
------------------------- | ------------------------
-![Work-It-Done create-new-project](./assets/images/create-new-project.png "create-new-project") | ![Work-It-Done update-project](./assets/images/update-project.png "update-project")
+| 3. Create a new project | 4. View, add, or update columns and cards |
+| --- | --- |
+| ![Work-It-Done create-new-project](./assets/images/create-new-project.png "create-new-project") | ![Work-It-Done update-project](./assets/images/update-project.png "update-project") |
 
-5. Choose an existing project from the list | 6. View, add, or update columns and cards
------------------------- | ------------------------
-![Work-It-Done workspace](./assets/images/workspace.png "workspace") | ![Work-It-Done existing-project](./assets/images/existing-project.png "existing-project")
+|5. Choose an existing project from the list | 6. View, add, or update columns and cards |
+| ------------------------ | ------------------------ |
+| ![Work-It-Done workspace](./assets/images/workspace.png "workspace") | ![Work-It-Done existing-project](./assets/images/existing-project.png "existing-project") |
 
 ## Technologies Utilized
  

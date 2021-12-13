@@ -64,14 +64,21 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 
 ## Contributions
 
-* **Victor Weinert** - project management (role assignments, scheduling), schema design, initial seeds, routes, Heroku deployment, testing, bug fixes
-* **Patrick Sebstead** - RESTful API design (routes), README, testing, bug fixes
-* **TJ James** - front end mock up, HTML, CSS, JS, Handlebars templates, bug fixes
-* **Lauren Groh** - ORM design (models & associations), README, PowerPoint slideshow, update seeds, styling & responsive design, testing, bug fixes
+**Victor Weinert** 
+- project management (role assignments, scheduling), schema design, initial seeds, routes, Heroku deployment, testing, bug fixes
+
+**Patrick Sebstead** 
+- RESTful API design (routes), README, testing, bug fixes
+
+**TJ James**
+- front end mock up, HTML, CSS, JS, Handlebars templates, bug fixes
+
+**Lauren Groh** 
+- ORM design (models & associations), README, PowerPoint slideshow, update seeds, styling & responsive design, testing, bug fixes
 
 ## Questions
 
-If you have any questions please connect with us through Github. 
+If you have any questions, feel free to connect with us through Github: 
 
 * [Victor Weinert](https://github.com/vw0389)
 * [Patrick Sebstead](https://github.com/RaiderNationBuilder)

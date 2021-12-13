@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 3333;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const crypto = require('crypto');
 const sess = {
-  secret: 'secret secret secret secret',
+  secret: crypto.randomBytes(20).toString("hex"),
   cookie: {},
   resave: false,
   saveUninitialized: true,

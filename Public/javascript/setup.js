@@ -38,3 +38,7 @@ $('#trash').droppable({
     $('#trash').addClass('trash-active');
   },
 });
+
+$('#login-button').on('click', () => {
+  window.location.replace('/workspace');
+});

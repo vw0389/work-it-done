@@ -12,9 +12,10 @@ $('#new-project-button').on('click', () => {
 
 // Enter name and send to database
 $('#new-project-tab').on('blur', '#new-project-name', async event => {
+  
   // event.stopPropagation();
-  console.log('new project');
   const projectName = $('#new-project-name').val().trim();
+  console.log("line 17", projectName);
 
   if (!projectName) {
     document.location.reload();
@@ -23,6 +24,7 @@ $('#new-project-tab').on('blur', '#new-project-name', async event => {
       method: 'POST',
       body: JSON.stringify({
         name: projectName,
+        // user_id: req.body.user_id
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -49,34 +51,25 @@ $('.project-name').on('click', 'h3', function () {
   textInput.trigger('focus');
 });
 
-$('.project-name').on('blur', '#edit-class-name', async function () {
+$('.project-name').on('blur', 'input', async function () {
   const projectName = $(this).val().trim();
-
-  if (!projectName) {
-    $('#edit-class-name').attr('placeHolder', 'The project needs a name');
+  const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      projectId,
+      projectName,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.ok) {
+    document.location.reload();
   } else {
     const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
 
-    console.log(projectName, projectId);
-    const response = await fetch(`/api/projects/`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        id: projectId,
-        name: projectName,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      document.location.reload();
-    } else {
-      console.log(response.statusText);
-    }
-
     const nameElement = $('<h3>').text(projectName);
-
     $(this).replaceWith(nameElement);
   }
 });

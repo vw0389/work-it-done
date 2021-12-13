@@ -253,8 +253,8 @@ ul {
 }
 
 #trash {
-  background-color: var(--loafer);
-  color: var(--catalina-blue);
+  /* background-color: var(--loafer);
+  color: var(--catalina-blue); */
 
   height: 10%;
 }

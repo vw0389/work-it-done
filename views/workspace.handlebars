@@ -14,11 +14,14 @@
         </li>
       {{/each}}
 
-      <li
-        id='new-project-tab'
-        class='not-sortable ui-sortable-handle ui-tabs-tab ui-state-default ui-tab ui-corner-left'
-      >
+      <li id='new-project-tab' class='not-sortable ui-tabs-tab ui-state-default ui-tab ui-corner-left'>
         <button id='new-project-button' class='project-tab not-sortable'>Create new project</button>
+      </li>
+
+      <li id='trash' class='project-tab not-sortable ui-tabs-tab ui-state-default ui-tab'>
+        <h4 class='project-tab'>
+          Drop Project, Column, Or Card Here To Delete
+        </h4>
       </li>
 
     </ul>
@@ -67,11 +70,6 @@
       {{/each}}
     </div>
   </div>
-</div>
-<div id='trash'>
-  <span>
-    Drop Project, Column, Or Card Here To Delete
-  </span>
 </div>
 
 <script src='https://code.jquery.com/jquery-3.6.0.js'></script>

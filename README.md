@@ -30,13 +30,20 @@ Project Requirements:
  * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 
-Based on the above requirements we decided to make a Trello-style kanban board. Each project is equivalant to a workspace, within that project there are tasks that need to be accomplished. These tasks can be moved via drag and drop from one column to another based on the updated state of the task.
+Based on the above requirements we decided to make a Trello-style kanban board. Each user is presented with a workspace where their projects can be stored. Within those projects, users can create status columns with moveable task cards. As the user progresses in completing tasks on a project, the user can move the task cards to reflect those changes - for example, from "To do" to "In progress" to "Finished".
+
+![Work-It-Done screenshot-1](./assets/images/screenshot-1.png "screenshot-1")
+![Work-It-Done screenshot-2](./assets/images/screenshot-2.png "screenshot-2")
+![Work-It-Done screenshot-3](./assets/images/screenshot-3.png "screenshot-3")
+![Work-It-Done screenshot-4](./assets/images/screenshot-4.png "screenshot-4")
+![Work-It-Done screenshot-5](./assets/images/screenshot-5.png "screenshot-5")
+![Work-It-Done screenshot-6](./assets/images/screenshot-6.png "screenshot-6")
 
 **View the application, here:** [Work-it-Done](https://warm-eyrie-07140.herokuapp.com/ "Work-it-Done")
 
 ## Instructions 
 
-1. Users who are new to the site should sign up with an email and password.
+1. Users who are new to the app should sign up with an email and password.
 2. Returning users should log in with the same email and password.
 3. Create a project.
 4. Add status columns.
@@ -59,10 +66,10 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 
 ## Contributions
 
-* **Victor Weinert** - project management (role assignments, scheduling, bug fixes), schema design, seeds, routes, password encryption, Heroku deployment
-* **Patrick Sebstead** - RESTful API design (routes), README
+* **Victor Weinert** - project management (role assignments, scheduling), schema design, initial seeds, routes, Heroku deployment, testing, bug fixes
+* **Patrick Sebstead** - RESTful API design (routes), README, testing, bug fixes
 * **TJ James** - front end mock up, HTML, CSS, JS, Handlebars templates, bug fixes
-* **Lauren Groh** - ORM design (models & associations, password encryption), README, PowerPoint slideshow
+* **Lauren Groh** - ORM design (models & associations), README, PowerPoint slideshow, update seeds, styling & responsive design, testing, bug fixes
 
 ## Questions
 

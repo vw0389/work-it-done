@@ -30,6 +30,7 @@ Cards.init(
         model: 'columns',
         key: 'id',
       },
+      onDelete: 'cascade',
     },
   },
   {

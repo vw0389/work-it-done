@@ -2,7 +2,7 @@ const Projects = require('../models/Projects');
 
 const projectsdata = [
   {
-    name: 'Learning Spanish',
+    name: 'Learn Spanish',
     user_id: 1,
   },
   {

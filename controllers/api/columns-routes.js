@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Columns} = require('../../models');
+const {Projects, Cards, Columns, Users} = require('../../models');
 const sequelize = require('../../config/connection');
 
 // model: columns: name, FK(project_id)
@@ -40,6 +40,7 @@ router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
     name: req.body.name,
+    project_id: req.body.project_id
   }).then(dbPostData =>
     res.json(dbPostData))
     .catch(err => {

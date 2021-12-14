@@ -30,18 +30,23 @@ Project Requirements:
  * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 
-Based on the above requirements we decided to make a Trello-style kanban board. Each project is equivalant to a workspace, within that project there are tasks that need to be accomplished. These tasks can be moved via drag and drop from one column to another based on the updated state of the task.
+Based on the above requirements we decided to make a Trello-style kanban board. Each user is presented with a workspace where their projects can be stored. Within those projects, users can create status columns with moveable task cards. As the user progresses in completing tasks on a project, the user can move the task cards to reflect those changes - for example, from "To do" to "In progress" to "Finished".
 
 **View the application, here:** [Work-it-Done](https://warm-eyrie-07140.herokuapp.com/ "Work-it-Done")
 
 ## Instructions 
 
-1. Users who are new to the site should sign up with an email and password.
-2. Returning users should log in with the same email and password.
-3. Create a project.
-4. Add status columns.
-5. Add cards to the columns.
-6. Move cards from column to column as the current status of the cards change.
+| 1. New users can register with email/password | 2. Returning users can log in with the same email/password |
+| :-- | :-- |
+| ![Work-It-Done register](./assets/images/register.png "register") | ![Work-It-Done login](./assets/images/login.png "login") |
+
+| 3. Create a new project | 4. View, add, or update columns and cards |
+| :-- | :-- |
+| ![Work-It-Done create-new-project](./assets/images/create-new-project.png "create-new-project") | ![Work-It-Done update-project](./assets/images/update-project.png "update-project") |
+
+|5. Choose an existing project from the list | 6. View, add, or update columns and cards |
+| :-- | :-- |
+| ![Work-It-Done workspace](./assets/images/workspace.png "workspace") | ![Work-It-Done existing-project](./assets/images/existing-project.png "existing-project") |
 
 ## Technologies Utilized
  
@@ -59,14 +64,21 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 
 ## Contributions
 
-* **Victor Weinert** - project management (role assignments, scheduling, bug fixes), schema design, seeds, routes, password encryption, Heroku deployment
-* **Patrick Sebstead** - RESTful API design (routes), README
-* **TJ James** - front end mock up, HTML, CSS, JS, Handlebars templates, bug fixes
-* **Lauren Groh** - ORM design (models & associations, password encryption), README, PowerPoint slideshow
+**Victor Weinert** 
+- project management (role assignments, scheduling), schema design, initial seeds, routes, Heroku deployment, testing, bug fixes
+
+**Patrick Sebstead** 
+- RESTful API design (routes), README, testing, bug fixes
+
+**TJ James**
+- front end mock up, HTML, CSS, JS, Handlebars templates, bug fixes
+
+**Lauren Groh** 
+- ORM design (models & associations), README, PowerPoint slideshow, update seeds, styling & responsive design, testing, bug fixes
 
 ## Questions
 
-If you have any questions please connect with us through Github. 
+If you have any questions, feel free to connect with us through Github: 
 
 * [Victor Weinert](https://github.com/vw0389)
 * [Patrick Sebstead](https://github.com/RaiderNationBuilder)

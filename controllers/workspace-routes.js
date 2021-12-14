@@ -5,7 +5,6 @@ const withAuth = require('../utils/auth');
 
 // Workspace with no project selected
 router.get('/', withAuth, (req, res) => {
-  console.log(req.session.user_id);
   Projects.findAll({
     where: {
       user_id: req.session.user_id,
@@ -30,10 +29,10 @@ router.get('/', withAuth, (req, res) => {
 });
 
 // Workspace with project selected
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
   Projects.findAll({
     where: {
-      user_id: 2,
+      user_id: req.session.user_id,
     },
     attributes: ['id', 'name'],
     include: [

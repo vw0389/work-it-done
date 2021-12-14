@@ -107,3 +107,16 @@ const updateCardColumn = async (event, ui) => {
     console.log(response.statusText);
   }
 };
+
+const deleteCard = async card => {
+  const cardId = card.children('.card-toggle').attr('id').replace('card-', '');
+  const response = await fetch(`/api/cards/${cardId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    console.log(response.statusText);
+  }
+};

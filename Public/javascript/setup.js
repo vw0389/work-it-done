@@ -22,21 +22,27 @@ $('.column').sortable({
   placeHolder: 'ui-state-highlight',
   items: 'li:not(.not-sortable)',
 });
-// .disableSelection();
 
 // Cards are collapsable
 $('.card-toggle').accordion({collapsible: true, active: false, heightStyle: 'content'});
 
 // Trash element is droppable - received project tabs, columns, and cards
-$('#trash').droppable({
-  accept: '.column-wrapper .card .project-tab1',
-  tolerance: 'touch',
-  drop: () => {
-    // TODO: Delete functionality
+$('.trash-drop').droppable({
+  // accept: '.column-wrapper .card .project-tab',
+  tolerance: 'pointer',
+  drop: (event, ui) => {
+    const item = $(ui.draggable);
+    if (item.hasClass('project-tab')) {
+      deleteProject(item);
+    } else if (item.hasClass('column-wrapper')) {
+      deleteColumn(item);
+    } else if (item.hasClass('card')) {
+      deleteCard(item);
+    }
   },
-  over: () => {
-    $('#trash').addClass('trash-active');
-  },
+  // over: (event, ui) => {
+  //   $(ui.draggable).addClass('.trash-drop-active');
+  // },
 });
 
 $('#login-button').on('click', () => {

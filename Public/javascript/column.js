@@ -73,3 +73,16 @@ $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
 
   $(this).replaceWith(nameElement);
 });
+
+const deleteColumn = async column => {
+  const columnId = column.attr('id').replace('column-', '');
+  const response = await fetch(`/api/columns/${columnId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    console.log(response.statusText);
+  }
+};

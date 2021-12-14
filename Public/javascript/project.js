@@ -12,10 +12,9 @@ $('#new-project-button').on('click', () => {
 
 // Enter name and send to database
 $('#new-project-tab').on('blur', '#new-project-name', async event => {
-  
   // event.stopPropagation();
   const projectName = $('#new-project-name').val().trim();
-  console.log("line 17", projectName);
+  console.log('line 17', projectName);
 
   if (!projectName) {
     document.location.reload();
@@ -24,7 +23,6 @@ $('#new-project-tab').on('blur', '#new-project-name', async event => {
       method: 'POST',
       body: JSON.stringify({
         name: projectName,
-        // user_id: req.body.user_id
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -73,3 +71,16 @@ $('.project-name').on('blur', 'input', async function () {
     $(this).replaceWith(nameElement);
   }
 });
+
+const deleteProject = async projectTab => {
+  const projectId = projectTab.attr('id').replace('project-tab-', '');
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    console.log(response.statusText);
+  }
+};

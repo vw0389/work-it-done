@@ -4,9 +4,9 @@
   --pastel-green: #5cdb95; /* Consider off-white */
   --algae-green: #8ee4af;
   --loafer: #edf5e1;
-  --gold-metallic: #DBB957;
-  --chinese-violet: #8E6C88;
-  --almond: #DCCCBC;
+  --gold-metallic: #dbb957;
+  --chinese-violet: #8e6c88;
+  --almond: #dcccbc;
 }
 
 * {
@@ -44,7 +44,7 @@ h2 {
   color: var(--almond);
   font-family: 'Lora', serif;
   padding-bottom: 5px;
-  border-bottom: 1px solid rgba(220, 204, 188, .7);
+  border-bottom: 1px solid rgba(220, 204, 188, 0.7);
 }
 
 h3 {
@@ -135,8 +135,10 @@ ul {
 
 #workspace-page {
   display: flex;
-  height: 100%;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: stretch;
+
+  /* justify-content: flex-start; */
 }
 
 #project-list {
@@ -150,7 +152,7 @@ ul {
 }
 #tabs {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   flex: 1;
   background-color: none;
 }
@@ -158,6 +160,7 @@ ul {
 .project-tab {
   font-size: 1.25rem;
   word-wrap: break-word;
+  /* z-index: 999; */
 }
 
 .column-container {
@@ -220,9 +223,7 @@ ul {
 }
 
 /* Vertical Tab functionality */
-.ui-tabs-vertical {
-  width: 55em;
-}
+
 .ui-tabs-vertical .ui-tabs-nav {
   padding: 0.2em 0.1em 0.2em 0.2em;
   float: left;
@@ -265,14 +266,15 @@ ul {
   height: 100%;
 }
 
-#trash {
-  /* background-color: var(--loafer);
-  color: var(--catalina-blue); */
+.trash-drop {
+  background-color: var(--loafer);
+  color: var(--catalina-blue);
+  display: block;
 
-  height: 10%;
+  height: 50px;
 }
 
-.trash-active {
+.trash-drop-active {
   background-color: var(--catalina-blue);
   color: var(--loafer);
 }
@@ -280,59 +282,59 @@ ul {
 /* Media queries */
 
 /*For screens under 1160px wide */
-@media screen and (max-width:1160px){
-  h2{
-      font-size: 2.75rem;
-      /* padding-right: 10px */
+@media screen and (max-width: 1160px) {
+  h2 {
+    font-size: 2.75rem;
+    /* padding-right: 10px */
   }
 }
 /*For screens under 1110px wide */
-@media screen and (max-width:1110px){
-  h2{
-      font-size: 2.5rem;
+@media screen and (max-width: 1110px) {
+  h2 {
+    font-size: 2.5rem;
   }
-  h3{
-      font-size: 2rem;
+  h3 {
+    font-size: 2rem;
   }
 }
 /*For screens under 1070px wide */
-@media screen and (max-width:1070px){
-  h2{
-      font-size: 2.3rem;
+@media screen and (max-width: 1070px) {
+  h2 {
+    font-size: 2.3rem;
   }
-  h3{
-      font-size: 1.75rem;
-      padding-right: 0;
+  h3 {
+    font-size: 1.75rem;
+    padding-right: 0;
   }
 }
 /*For screens under 1020px wide */
-@media screen and (max-width:1020px){
-  h2{
-      font-size: 2.1rem;
+@media screen and (max-width: 1020px) {
+  h2 {
+    font-size: 2.1rem;
   }
-  h3{
-      font-size: 1.7rem;
-      padding-right: 0;
+  h3 {
+    font-size: 1.7rem;
+    padding-right: 0;
   }
 }
 /*For screens under 990px wide */
-@media screen and (max-width:990px){
-  h2{
-      font-size: 1.9rem;
+@media screen and (max-width: 990px) {
+  h2 {
+    font-size: 1.9rem;
   }
-  h3{
-      font-size: 1.5rem;
-      padding-right: 0;
+  h3 {
+    font-size: 1.5rem;
+    padding-right: 0;
   }
 }
 /*For screens under 940px wide */
-@media screen and (max-width:940px){
-  h2{
-      font-size: 1.6rem;
+@media screen and (max-width: 940px) {
+  h2 {
+    font-size: 1.6rem;
   }
-  h3{
-      font-size: 1.4rem;
-      padding-right: 0;
+  h3 {
+    font-size: 1.4rem;
+    padding-right: 0;
   }
 }
 /* For screens under 890px wide

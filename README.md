@@ -50,7 +50,7 @@ Based on the above requirements we decided to make a Trello-style kanban board. 
 
 ## Technologies Utilized
  
- * booststrap
+ * JQueryUI
  * MySQL
  * Handlebars
  * Node

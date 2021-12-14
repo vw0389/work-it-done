@@ -10,7 +10,7 @@ $('.project-tab').draggable({
 $('#tabs')
   .tabs({
     collapsible: true,
-    // active: false,
+    active: false,
     heightStyle: 'content',
   })
   .addClass('ui-tabs-vertical ui-helper-clearfix');

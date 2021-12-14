@@ -30,9 +30,7 @@ $('#new-project-tab').on('blur', '#new-project-name', async event => {
     });
 
     if (response.ok) {
-      req.session.cookies.activeTab = $('#tabs').tabs('option', 'active');
       document.location.reload();
-      $(document).ready($('#tabs').tabs('option', 'active', req.session.cookies.activeTab));
     } else {
       $('#popup').text(response.statusText);
       $('#popup').dialog('open');
@@ -55,7 +53,6 @@ $('.project-name').on('click', 'h3', function () {
 $('.project-name').on('blur', '#edit-class-name', async function () {
   const projectName = $(this).val().trim();
   const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
-  console.log(projectName, projectId);
   const response = await fetch(`/api/projects/`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -67,9 +64,9 @@ $('.project-name').on('blur', '#edit-class-name', async function () {
     },
   });
   if (response.ok) {
-    session.activeTab = $('#tabs').tabs('option', 'active');
     document.location.reload();
-    $(document).ready($('#tabs').tabs('option', 'active', session.activeTab));
+
+    $(document).ready(() => {});
   } else {
     $('#popup').text(response.statusText);
     $('#popup').dialog('open');

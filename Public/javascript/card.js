@@ -41,8 +41,12 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
 $('.card-body').on('click', '.edit-card-button', event => {
   const nameEl = $(event.target).closest('.card-toggle').children('h5');
   const cardName = nameEl.text().trim();
-  const nameInput = $('<input>').attr('class', 'card-name-input').addClass('card-name ').val(cardName);
-  nameEl.replaceWith(nameInput);
+  const inputDiv = $('<div>').addClass(
+    'card-toggle ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons'
+  );
+  const nameInput = $('<input>').addClass('card-name card-name-input').val(cardName);
+  $(nameInput).appendTo(inputDiv);
+  nameEl.replaceWith(inputDiv);
 
   const textEl = $(event.target).siblings('.card-text');
   const cardText = textEl.text().trim();
@@ -55,7 +59,12 @@ $('.card-body').on('click', '.edit-card-button', event => {
 });
 
 $('.card-toggle').on('click', '#card-save-button', async function (event) {
-  const cardName = $(event.target).closest('.card-toggle').children('.card-name-input').val().trim();
+  const cardName = $(event.target)
+    .closest('.card-toggle')
+    .children('.card-toggle')
+    .children('.card-name-input')
+    .val()
+    .trim();
   const cardText = $(event.target).siblings('textarea').val().trim();
   const cardId = $(event.target).closest('.card-toggle').attr('id').replace('card-', '');
 

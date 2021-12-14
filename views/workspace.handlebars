@@ -17,7 +17,7 @@
       {{/each}}
 
       <li id='new-project-tab' class='not-sortable ui-tabs-tab ui-state-default ui-tab ui-corner-left'>
-        <button id='new-project-button' class='project-tab not-sortable'>Create new project</button>
+        <button id='new-project-button' class='project-tab not-sortable'>New project</button>
       </li>
 
     </ul>
@@ -28,10 +28,13 @@
       {{! PROJECT LOOP }}
       {{#each projects}}
         <div id='project-{{id}}' class='project-workspace'>
-          <div class='flex-row'>
+          <div class='flex-row workspace-header'>
 
             <h3 class='project-name'>{{name}}</h3>
-
+            {{! add column button }}
+            <div class='new-column-column'>
+              <button id='column-project-{{id}}' class='new-column-button'>Add Column</button>
+            </div>
           </div>
 
           <div class='column-container'>
@@ -60,11 +63,6 @@
                 <button id='{{id}}' class='add-card-button not-sortable'>Add Card</button>
               </div>
             {{/each}}
-
-            {{! add column button }}
-            <div class='column-wrapper new-column-column'>
-              <button id='column-project-{{id}}' class='new-column-button'>Add Column</button>
-            </div>
 
           </div>
         </div>

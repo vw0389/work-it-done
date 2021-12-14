@@ -4,8 +4,9 @@ const sequelize = require('../../config/connection');
 
 // model: columns: name, FK(project_id)
 
-// get all columns ---WORKING
+// get all columns 
 router.get('/', (req, res) =>
+  
   Columns.findAll()
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -34,7 +35,7 @@ router.get('/:projectId', (req, res) => {
     });
 });
 
-// post create new column   ---WORKING
+// post create new column   
 router.post('/', (req, res) => {
   console.log(req.body);
   Columns.create({
@@ -48,7 +49,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// put update columns within project   ---WORKING
+// put update columns within project
 router.put('/:id', (req, res) => {
   Columns.update(req.body, {
     where: {
@@ -78,7 +79,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Delete a column  ---NOt WORKING
+// Delete a column  ---NOt WORKINGs
 router.delete('/:id', (req, res) => {
   Columns.destroy({
     where: {

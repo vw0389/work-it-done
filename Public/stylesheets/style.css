@@ -267,11 +267,15 @@ ul {
 }
 
 .trash-drop {
-  background-color: var(--loafer);
-  color: var(--catalina-blue);
+  background-color: var(--lochinvar);
+  color: var(--loafer);
   display: block;
-
-  height: 50px;
+  height: 5rem;
+  width: 50%;
+  align-self: center;
+  margin: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--catalina-blue);
 }
 
 .trash-drop-active {

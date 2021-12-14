@@ -26,6 +26,7 @@ Projects.init(
         model: 'users',
         key: 'id',
       },
+      onDelete: 'cascade',
     },
   },
   {

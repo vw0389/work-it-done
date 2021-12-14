@@ -1,3 +1,5 @@
+let activeProject;
+
 // Create new Project
 // Button activation
 $('#new-project-button').on('click', () => {
@@ -50,9 +52,12 @@ $('.project-name').on('click', 'h3', function () {
 });
 
 $('.project-name').on('blur', 'input', async function () {
+  activeProject = $('#tabs').tabs('option', 'active');
+
   const projectName = $(this).val().trim();
   const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
-  const response = await fetch(`/api/projects/${projectId}`, {
+  console.log(projectName, projectId);
+  const response = await fetch(`/api/projects/`, {
     method: 'PUT',
     body: JSON.stringify({
       projectId,
@@ -64,6 +69,7 @@ $('.project-name').on('blur', 'input', async function () {
   });
   if (response.ok) {
     document.location.reload();
+    $('#tabs').tabs('option', 'active', activeProject);
   } else {
     const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
 
@@ -72,8 +78,11 @@ $('.project-name').on('blur', 'input', async function () {
   }
 });
 
+// Delete Project - drag and drop tab
 const deleteProject = async projectTab => {
   const projectId = projectTab.attr('id').replace('project-tab-', '');
+  console.log(`id ${projectId}`);
+
   const response = await fetch(`/api/projects/${projectId}`, {
     method: 'DELETE',
   });

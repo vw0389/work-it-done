@@ -29,6 +29,7 @@ Columns.init(
         model: 'projects',
         key: 'id',
       },
+      onDelete: 'cascade',
     },
   },
   {

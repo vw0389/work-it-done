@@ -1,7 +1,8 @@
+/* GENERIC ELEMENT CSS */
 :root {
   --catalina-blue: #05386b;
   --lochinvar: #379683;
-  --pastel-green: #5cdb95; /* Consider off-white */
+  --pastel-green: #5cdb95;
   --algae-green: #8ee4af;
   --loafer: #edf5e1;
   --gold-metallic: #dbb957;
@@ -12,12 +13,12 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  /* border: 0.5px solid black; */
   margin: 0;
 }
 
 body {
   background-image: linear-gradient(to bottom right, var(--catalina-blue), var(--pastel-green));
+  background-size: cover;
 }
 
 h1,
@@ -35,6 +36,7 @@ a {
   margin-inline-end: 0;
   white-space: normal;
 }
+
 h1 {
   font-size: 4rem;
 }
@@ -78,6 +80,7 @@ button:hover {
   background-color: var(--algae-green);
   color: var(--catalina-blue);
 }
+
 .container {
   width: 100%;
   max-width: 1500px;
@@ -86,10 +89,12 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
+
 .contents {
   height: 100%;
   background-image: linear-gradient(to bottom right, var(--lochinvar), var(--pastel-green));
 }
+
 header {
   padding: 1rem 2rem;
   background-image: linear-gradient(to bottom left, var(--algae-green), var(--lochinvar), var(--pastel-green));
@@ -105,6 +110,50 @@ ul {
   border-radius: 5px;
 }
 
+.separator {
+  display: block;
+  height: 0.5rem;
+  background-image: linear-gradient(270deg, var(--catalina-blue), var(--lochinvar));
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dk-on-green {
+  background-color: var(--lochinvar);
+  color: var(--catalina-blue);
+}
+
+.lt-on-blue {
+  background-color: var(--catalina-blue);
+  color: var(--loafer);
+}
+
+.lt-on-green {
+  background-color: var(--pastel-green);
+  color: var(--loafer);
+}
+
+::-webkit-scrollbar {
+  width: 10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--catalina-blue);
+  border-radius: 5px;
+}
+
 /* HOMEPAGE SPECIFIC CSS */
 
 #welcome-message {
@@ -113,6 +162,7 @@ ul {
   margin-left: 7rem;
   color: var(--almond);
 }
+
 .welcome-3 {
   font-weight: 400;
   font-style: italic;
@@ -131,18 +181,21 @@ ul {
   padding: 0.25rem;
   margin: 0.25rem;
 }
+
 /* WORKSPACE PAGE SPECIFIC CSS */
 
 #workspace-page {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-
-  /* justify-content: flex-start; */
 }
 
 #project-list {
   width: 20%;
+}
+
+#new-project-button {
+  width: auto;
 }
 
 .project-workspace {
@@ -150,17 +203,21 @@ ul {
   flex-grow: 1;
   height: 95%;
 }
+
+.workspace-header {
+  align-items: top;
+}
+
 #tabs {
   display: flex;
   align-items: stretch;
-  flex: 1;
+  flex: 1 1 100%;
   background-color: none;
 }
 
 .project-tab {
   font-size: 1.25rem;
   word-wrap: break-word;
-  /* z-index: 999; */
 }
 
 .column-container {
@@ -174,52 +231,26 @@ ul {
 .column-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  margin: 1em;
+  padding: 0.75rem;
+  margin: 0.5rem;
   background-color: var(--pastel-green);
-  flex: 0 0 20rem;
+  flex: 1 0 20%;
 }
 
 .column {
   padding: 5px 0;
 }
 
-.card-text {
-}
-
-.separator {
-  display: block;
-  height: 0.5rem;
-  background-image: linear-gradient(270deg, var(--catalina-blue), var(--lochinvar));
-}
-
-.dk-on-green {
+.trash-drop {
   background-color: var(--lochinvar);
-  color: var(--catalina-blue);
-}
-
-.lt-on-blue {
-  background-color: var(--catalina-blue);
   color: var(--loafer);
-}
-
-.lt-on-green {
-  background-color: var(--pastel-green);
-  color: var(--loafer);
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: block;
+  height: 5rem;
+  width: 50%;
+  align-self: center;
+  margin: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--catalina-blue);
 }
 
 /* Vertical Tab functionality */
@@ -243,76 +274,31 @@ ul {
   padding-right: 0.1em;
   border-right-width: 1px;
 }
-/* .ui-tabs-vertical .ui-tabs-panel {
-  padding: 1em;
-  float: right;
-  width: 40em;
-} */
 
 .ui-icon {
   z-index: 99;
-}
-
-::-webkit-scrollbar {
-  width: 10;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--catalina-blue);
-  border-radius: 5px;
 }
 
 .ui-accordion-content-active {
   height: 100%;
 }
 
-.trash-drop {
-  background-color: var(--lochinvar);
-  color: var(--loafer);
-  display: block;
-  height: 5rem;
-  width: 50%;
-  align-self: center;
-  margin: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid var(--catalina-blue);
-}
-
-.trash-drop-active {
-  background-color: var(--catalina-blue);
-  color: var(--loafer);
-}
-
 /* Media queries */
 
-/*For screens under 1160px wide */
-@media screen and (max-width: 1160px) {
-  h2 {
-    font-size: 2.75rem;
-    /* padding-right: 10px */
+/*For screens under 1024px wide */
+@media screen and (max-width: 1024px) {
+  :root {
+    font-size: 12px;
   }
 }
-/*For screens under 1110px wide */
-@media screen and (max-width: 1110px) {
-  h2 {
-    font-size: 2.5rem;
-  }
-  h3 {
-    font-size: 2rem;
+/*For screens under 768px wide */
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 10px;
   }
 }
-/*For screens under 1070px wide */
-@media screen and (max-width: 1070px) {
-  h2 {
-    font-size: 2.3rem;
-  }
-  h3 {
-    font-size: 1.75rem;
-    padding-right: 0;
-  }
-}
-/*For screens under 1020px wide */
-@media screen and (max-width: 1020px) {
+/*For screens under 480px wide */
+@media screen and (max-width: 480px) {
   h2 {
     font-size: 2.1rem;
   }
@@ -321,8 +307,8 @@ ul {
     padding-right: 0;
   }
 }
-/*For screens under 990px wide */
-@media screen and (max-width: 990px) {
+/*For screens under 320px wide */
+@media screen and (max-width: 320px) {
   h2 {
     font-size: 1.9rem;
   }
@@ -331,35 +317,3 @@ ul {
     padding-right: 0;
   }
 }
-/*For screens under 940px wide */
-@media screen and (max-width: 940px) {
-  h2 {
-    font-size: 1.6rem;
-  }
-  h3 {
-    font-size: 1.4rem;
-    padding-right: 0;
-  }
-}
-/* For screens under 890px wide
-@media screen and (max-width:890px){
-  body {
-    text-align: center;
-  }
-  h1{
-    text-align: center;
-  }
-  h2{
-      font-size: 2.5rem;
-  }
-  h3{
-      font-size: 2rem;
-  } 
-.flex-row{
-      display: inline-block;
-}
-#welcome-message{
-    padding:0;
-    margin: 0;
-}
-} */

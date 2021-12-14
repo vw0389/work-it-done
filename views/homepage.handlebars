@@ -1,15 +1,16 @@
 <div class='flex-row'>
-  <section id="welcome-message">
 
+  {{! WELCOME MESSAGE }}
+  <section id='welcome-message'>
     <h2>Welcome to Work-It-Done!</h2>
-    <h3>Work-It-Done helps get you organized. Whether keeping yourself on task or collaborating as a team, Work-It-Done can assist you with keeping notes or tracking your progress through a large project.</h3> 
-    <h3 class="welcome-3">&#10004; Register an account or log in to start optimizing your workflows, now!</h3>
+    <h3>Work-It-Done helps get you organized. Whether keeping yourself on task or collaborating as a team, Work-It-Done
+      can assist you with keeping notes or tracking your progress through a large project.</h3>
+    <h3 class='welcome-3'>&#10004; Register an account or log in to start optimizing your workflows, now!</h3>
   </section>
 
-  
-  
   <section id='login-section'>
-    <form id='login-form' class="flex-col">
+    {{! LOGIN FORM }}
+    <form id='login-form' class='flex-col'>
       <h4>Login</h4>
       <div>
         <label for='login-email'>Email</label>
@@ -19,12 +20,13 @@
         <label for='login-password'>Password</label>
         <input type='password' name='login-password' id='login-password' />
       </div>
-      <button type='submit' id='login-button' class="dk-on-green">Login</button>
+      <button type='submit' id='login-button' class='dk-on-green'>Login</button>
     </form>
 
     <h4> or </h4>
 
-    <form id='register-form' class="flex-col">
+    {{! REGISTER FORM }}
+    <form id='register-form' class='flex-col'>
       <h4>Register</h4>
       <div>
         <label for='register-email'>Email</label>
@@ -34,12 +36,10 @@
         <label for='register-password'>Password</label>
         <input type='password' name='register-password' id='register-password' />
       </div>
-      <button type='submit' id='register-button' class="dk-on-green">Register</button>
+      <button type='submit' id='register-button' class='dk-on-green'>Register</button>
     </form>
-</section>
-  </div>
-
-  <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
-  <script type='text/javascript' src='/javascript/login.js'></script>
-
+  </section>
 </div>
+
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script type='text/javascript' src='/javascript/login.js'></script>

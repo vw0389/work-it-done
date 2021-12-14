@@ -13,10 +13,9 @@ $('.add-card-button').on('click', event => {
 $('.column-wrapper').on('blur', '#add-card-input', async event => {
   const cardName = $('#add-card-input').val().trim();
   const columnId = $('#add-card-input').attr('data-column-id');
-  console.log(cardName, columnId);
 
   if (!cardName) {
-    $('#new-column-name').attr('placeHolder', 'The card needs a name');
+    $('#new-column-name').attr('placeHolder', 'A card needs a name');
   } else {
     const response = await fetch('/api/cards', {
       method: 'POST',
@@ -57,28 +56,31 @@ $('.card-body').on('click', '.edit-card-button', event => {
 });
 
 $('.card-toggle').on('click', '#card-save-button', async function (event) {
-  console.log(event.target);
   const cardName = $(event.target).closest('.card-toggle').children('.card-name-input').val().trim();
   const cardText = $(event.target).siblings('textarea').val().trim();
   const cardId = $(event.target).closest('.card-toggle').attr('id').replace('card-', '');
 
-  const response = await fetch(`/api/cards/`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      id: cardId,
-      name: cardName,
-      text: cardText,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  if (response.ok) {
-    document.location.reload();
+  if (!cardName) {
+    $('.card-name-input').attr('placeHolder', 'A card needs a name');
   } else {
-    $('#popup').text(response.statusText);
-    $('#popup').dialog('open');
+    const response = await fetch(`/api/cards/`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        id: cardId,
+        name: cardName,
+        text: cardText,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
+    }
   }
 });
 

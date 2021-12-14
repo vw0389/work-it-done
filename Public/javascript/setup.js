@@ -7,6 +7,8 @@ $('.project-tab').draggable({
 });
 
 // Tab selection functionality - clicking tab opens the project view
+let activeTab;
+
 $('#tabs')
   .tabs({
     collapsible: true,

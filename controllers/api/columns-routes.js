@@ -3,8 +3,10 @@ const {Columns} = require('../../models');
 
 /* Model: columns: name, FK(project_id) */
 
+
 // get all columns ---WORKING || api/columns
 router.get('/', (req, res) =>
+  
   Columns.findAll()
     .then(columnData => res.json(columnData))
     .catch(err => {
@@ -33,6 +35,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
 // post create new column ---WORKING || api/columns
 router.post('/', (req, res) => {
   Columns.create({
@@ -45,6 +48,7 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 // put update columns within project ---WORKING || api/columns/:id
 router.put('/:id', (req, res) => {

@@ -51,7 +51,7 @@ $('.project-name').on('click', 'h3', function () {
   textInput.trigger('focus');
 });
 
-$('.project-name').on('blur', 'input', async function () {
+$('.project-name').on('blur', '#edit-class-name', async function () {
   activeProject = $('#tabs').tabs('option', 'active');
 
   const projectName = $(this).val().trim();

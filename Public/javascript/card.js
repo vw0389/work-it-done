@@ -31,7 +31,7 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
     });
 
     if (response.ok) {
-      // document.location.reload();
+      document.location.reload();
     } else {
       console.log(response);
     }
@@ -78,7 +78,7 @@ $('.card-toggle').on('click', '#card-save-button', async function (event) {
   });
 
   if (response.ok) {
-    // document.location.reload();
+    document.location.reload();
   } else {
     console.log(response.statusText);
   }
@@ -102,7 +102,7 @@ const updateCardColumn = async (event, ui) => {
   });
 
   if (response.ok) {
-    // document.location.replace('/workspace');
+    document.location.reload();
   } else {
     console.log(response.statusText);
   }

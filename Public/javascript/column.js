@@ -31,7 +31,7 @@ $('.new-column-column').on('blur', 'input', async event => {
     });
 
     if (response.ok) {
-      // document.location.reload();
+      document.location.reload();
     } else {
       console.log(response);
     }
@@ -64,7 +64,7 @@ $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
   });
 
   if (response.ok) {
-    // document.location.reload();
+    document.location.reload();
   } else {
     alert(response.statusText);
   }

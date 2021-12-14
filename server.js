@@ -11,8 +11,10 @@ const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const crypto = require('crypto');
 const sess = {
-  secret: crypto.randomBytes(20).toString("hex"),
-  cookie: {},
+  secret: crypto.randomBytes(20).toString('hex'),
+  cookie: {
+    activeTab: 0,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -22,7 +24,7 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({});  
+const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

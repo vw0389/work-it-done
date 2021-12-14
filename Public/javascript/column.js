@@ -33,7 +33,8 @@ $('.new-column-column').on('blur', 'input', async event => {
     if (response.ok) {
       document.location.reload();
     } else {
-      console.log(response);
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
     }
   }
 });
@@ -66,7 +67,8 @@ $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    alert(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 
   const nameElement = $('<h4>').text(columnName);
@@ -83,6 +85,7 @@ const deleteColumn = async column => {
   if (response.ok) {
     document.location.reload();
   } else {
-    console.log(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 };

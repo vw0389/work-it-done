@@ -1,6 +1,5 @@
-let activeProject;
-
 // Create new Project
+
 // Button activation
 $('#new-project-button').on('click', () => {
   const textInput = $('<input>')
@@ -14,7 +13,6 @@ $('#new-project-button').on('click', () => {
 
 // Enter name and send to database
 $('#new-project-tab').on('blur', '#new-project-name', async event => {
-  // event.stopPropagation();
   const projectName = $('#new-project-name').val().trim();
   console.log('line 17', projectName);
 
@@ -32,9 +30,12 @@ $('#new-project-tab').on('blur', '#new-project-name', async event => {
     });
 
     if (response.ok) {
+      req.session.cookies.activeTab = $('#tabs').tabs('option', 'active');
       document.location.reload();
+      $(document).ready($('#tabs').tabs('option', 'active', req.session.cookies.activeTab));
     } else {
-      console.log(response);
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
     }
   }
 });
@@ -52,8 +53,6 @@ $('.project-name').on('click', 'h3', function () {
 });
 
 $('.project-name').on('blur', '#edit-class-name', async function () {
-  activeProject = $('#tabs').tabs('option', 'active');
-
   const projectName = $(this).val().trim();
   const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
   console.log(projectName, projectId);
@@ -68,13 +67,12 @@ $('.project-name').on('blur', '#edit-class-name', async function () {
     },
   });
   if (response.ok) {
+    session.activeTab = $('#tabs').tabs('option', 'active');
     document.location.reload();
-    $('#tabs').tabs('option', 'active', activeProject);
+    $(document).ready($('#tabs').tabs('option', 'active', session.activeTab));
   } else {
-    const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
-
-    const nameElement = $('<h3>').text(projectName);
-    $(this).replaceWith(nameElement);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 });
 
@@ -90,6 +88,7 @@ const deleteProject = async projectTab => {
   if (response.ok) {
     document.location.reload();
   } else {
-    console.log(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 };

@@ -8,7 +8,11 @@ $('.project-tab').draggable({
 
 // Tab selection functionality - clicking tab opens the project view
 $('#tabs')
-  .tabs({collapsible: true, active: false, heightStyle: 'content'})
+  .tabs({
+    collapsible: true,
+    // active: false,
+    heightStyle: 'content',
+  })
   .addClass('ui-tabs-vertical ui-helper-clearfix');
 $('#tabs li').removeClass('ui-corner-top').addClass('ui-corner-left');
 

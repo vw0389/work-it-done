@@ -16,7 +16,6 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
   console.log(cardName, columnId);
 
   if (!cardName) {
-    console.log('no card name');
     $('#new-column-name').attr('placeHolder', 'The card needs a name');
   } else {
     const response = await fetch('/api/cards', {
@@ -33,7 +32,8 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
     if (response.ok) {
       document.location.reload();
     } else {
-      console.log(response);
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
     }
   }
 });
@@ -54,7 +54,6 @@ $('.card-body').on('click', '.edit-card-button', event => {
   const editButton = $(event.target);
   const saveButton = $('<button>').text('Save Card').attr('id', 'card-save-button');
   editButton.replaceWith(saveButton);
-  console.log(cardName, cardText);
 });
 
 $('.card-toggle').on('click', '#card-save-button', async function (event) {
@@ -62,8 +61,6 @@ $('.card-toggle').on('click', '#card-save-button', async function (event) {
   const cardName = $(event.target).closest('.card-toggle').children('.card-name-input').val().trim();
   const cardText = $(event.target).siblings('textarea').val().trim();
   const cardId = $(event.target).closest('.card-toggle').attr('id').replace('card-', '');
-
-  console.log(cardName, cardText, cardId);
 
   const response = await fetch(`/api/cards/`, {
     method: 'PUT',
@@ -80,7 +77,8 @@ $('.card-toggle').on('click', '#card-save-button', async function (event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    console.log(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 });
 
@@ -101,10 +99,9 @@ const updateCardColumn = async (event, ui) => {
     },
   });
 
-  if (response.ok) {
-    document.location.reload();
-  } else {
-    console.log(response.statusText);
+  if (!response.ok) {
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 };
 
@@ -115,8 +112,9 @@ const deleteCard = async card => {
   });
 
   if (response.ok) {
-    document.location.reload();
+    // document.location.reload();
   } else {
-    console.log(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 };

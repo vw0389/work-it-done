@@ -1,32 +1,31 @@
 const router = require('express').Router();
-const {Projects, Cards, Columns, Users} = require('../../models');
-const sequelize = require('../../config/connection');
+const {Projects} = require('../../models');
 
-// model: projects: name
+/* Model: projects: name */
 
-// get all projects
+// get all projects  || api/projects
 router.get('/', (req, res) =>
   Projects.findAll()
-    .then(dbPostData => res.json(dbPostData))
+    .then(projectData => res.json(projectData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     })
 );
 
-// get all projects for a user  ---WORKING
-router.get('/:userId', (req, res) => {
+// get all projects for a user  ---WORKING || api/projects/:id
+router.get('/:id', (req, res) => {
   Projects.findAll({
     where: {
-      user_id: req.params.userId,
+      user_id: req.params.id,
     },
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(projectData => {
+      if (!projectData) {
         res.status(404).json({message: 'There was no project found with this id.'});
         return;
       }
-      res.json(dbPostData);
+      res.json(projectData);
     })
     .catch(err => {
       console.log(err);
@@ -34,22 +33,20 @@ router.get('/:userId', (req, res) => {
     });
 });
 
-// ERROR STARTS HERE
-// post create a new project  ---WORKING
+// post create a new project  ---WORKING || api/projects
 router.post('/', (req, res) => {
   Projects.create({
     name: req.body.name,
     user_id: req.session.user_id,
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(projectData => res.json(projectData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-// ERROR ENDS HERE
 
-// put update project data   ---WORKING
+// put update project data   ---WORKING  || api/projects
 router.put('/', (req, res) => {
   Projects.update(
     {name: req.body.projectName},
@@ -59,13 +56,13 @@ router.put('/', (req, res) => {
       },
     }
   )
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(projectData => {
+      if (!projectData) {
         res.status(404).json({message: 'There was no project found with this id.'});
         return;
       }
-      console.log(dbPostData);
-      res.json(dbPostData);
+      console.log(projectData);
+      res.json(projectData);
     })
     .catch(err => {
       console.log(err);
@@ -73,19 +70,19 @@ router.put('/', (req, res) => {
     });
 });
 
-// Delete a project  ---WORKING
+// Delete a project  ---WORKING || api/projects/:id
 router.delete('/:id', (req, res) => {
   Projects.destroy({
     where: {
       id: req.params.id,
     },
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(projectData => {
+      if (!projectData) {
         res.status(404).json({message: 'There was no card found with this id.'});
         return;
       }
-      res.json(dbPostData);
+      res.json(projectData);
     })
     .catch(err => {
       console.log(err);

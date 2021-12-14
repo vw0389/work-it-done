@@ -39,7 +39,6 @@ $('.column-wrapper').on('blur', '#add-card-input', async event => {
 
 // Edit card name
 $('.card-body').on('click', '.edit-card-button', event => {
-  console.log(event.target);
   const nameEl = $(event.target).closest('.card-toggle').children('h5');
   const cardName = nameEl.text().trim();
   const nameInput = $('<input>').attr('class', 'card-name-input').addClass('card-name ').val(cardName);
@@ -88,7 +87,6 @@ $('.card-toggle').on('click', '#card-save-button', async function (event) {
 const updateCardColumn = async (event, ui) => {
   const cardId = $(ui.item[0]).children('.card-toggle').attr('id').replace('card-', '');
   const columnId = $(ui.item[0]).closest('.column-wrapper').attr('id').replace('column-', '');
-  console.log(cardId, columnId, ui);
 
   const response = await fetch(`/api/cards/`, {
     method: 'PUT',
@@ -114,7 +112,7 @@ const deleteCard = async card => {
   });
 
   if (response.ok) {
-    // document.location.reload();
+    document.location.reload();
   } else {
     $('#popup').text(response.statusText);
     $('#popup').dialog('open');

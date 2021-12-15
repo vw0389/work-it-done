@@ -14,7 +14,6 @@ $('.new-column-column').on('click', 'button', event => {
 $('.new-column-column').on('blur', 'input', async event => {
   const columnName = $('#new-column-name').val().trim();
   const projectId = $('#new-column-name').attr('data-project-id');
-  console.log(columnName, projectId);
 
   if (!columnName) {
     $('#new-column-name').attr('placeHolder', 'The column needs a name');
@@ -33,7 +32,8 @@ $('.new-column-column').on('blur', 'input', async event => {
     if (response.ok) {
       document.location.reload();
     } else {
-      console.log(response);
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
     }
   }
 });
@@ -51,7 +51,6 @@ $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
   const columnName = $(this).val().trim();
   const columnId = $(this).closest('.column-wrapper').attr('id').replace('column-', '');
 
-  console.log(columnName, columnId);
   const response = await fetch(`/api/columns/${columnId}`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -66,12 +65,9 @@ $('.column-wrapper').on('blur', '#column-name-edit', async function (event) {
   if (response.ok) {
     document.location.reload();
   } else {
-    alert(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
-
-  const nameElement = $('<h4>').text(columnName);
-
-  $(this).replaceWith(nameElement);
 });
 
 const deleteColumn = async column => {
@@ -83,6 +79,7 @@ const deleteColumn = async column => {
   if (response.ok) {
     document.location.reload();
   } else {
-    console.log(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 };

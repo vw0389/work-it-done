@@ -1,6 +1,5 @@
-let activeProject;
-
 // Create new Project
+
 // Button activation
 $('#new-project-button').on('click', () => {
   const textInput = $('<input>')
@@ -14,12 +13,12 @@ $('#new-project-button').on('click', () => {
 
 // Enter name and send to database
 $('#new-project-tab').on('blur', '#new-project-name', async event => {
-  // event.stopPropagation();
   const projectName = $('#new-project-name').val().trim();
   console.log('line 17', projectName);
 
   if (!projectName) {
-    document.location.reload();
+    $('#popup').text('A project needs a name');
+    $('#popup').dialog('open');
   } else {
     const response = await fetch('/api/projects', {
       method: 'POST',
@@ -34,7 +33,8 @@ $('#new-project-tab').on('blur', '#new-project-name', async event => {
     if (response.ok) {
       document.location.reload();
     } else {
-      console.log(response);
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
     }
   }
 });
@@ -52,29 +52,31 @@ $('.project-name').on('click', 'h3', function () {
 });
 
 $('.project-name').on('blur', '#edit-class-name', async function () {
-  activeProject = $('#tabs').tabs('option', 'active');
-
   const projectName = $(this).val().trim();
   const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
-  console.log(projectName, projectId);
-  const response = await fetch(`/api/projects/`, {
-    method: 'PUT',
-    body: JSON.stringify({
-      projectId,
-      projectName,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  if (response.ok) {
-    document.location.reload();
-    $('#tabs').tabs('option', 'active', activeProject);
-  } else {
-    const projectId = $(this).closest('.project-workspace').attr('id').replace('project-', '');
 
-    const nameElement = $('<h3>').text(projectName);
-    $(this).replaceWith(nameElement);
+  if (!projectName) {
+    $('#popup').text('A project needs a name');
+    $('#popup').dialog('open');
+  } else {
+    const response = await fetch(`/api/projects/`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        projectId,
+        projectName,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (response.ok) {
+      document.location.reload();
+
+      $(document).ready(() => {});
+    } else {
+      $('#popup').text(response.statusText);
+      $('#popup').dialog('open');
+    }
   }
 });
 
@@ -90,6 +92,7 @@ const deleteProject = async projectTab => {
   if (response.ok) {
     document.location.reload();
   } else {
-    console.log(response.statusText);
+    $('#popup').text(response.statusText);
+    $('#popup').dialog('open');
   }
 };

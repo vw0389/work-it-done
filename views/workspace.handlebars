@@ -1,8 +1,10 @@
 <h2>Your Workspace</h2>
 <div id='workspace-page'>
 
+  {{! TAB WIDGET }}
   <div id='tabs' class='lt-on-blue'>
 
+    {{! TAB LIST }}
     <ul id='project-list'>
       <li class='not-sortable'>
         <h3>Project List</h3>
@@ -15,27 +17,35 @@
       {{/each}}
 
       <li id='new-project-tab' class='not-sortable ui-tabs-tab ui-state-default ui-tab ui-corner-left'>
-        <button id='new-project-button' class='project-tab not-sortable'>Create new project</button>
+        <button id='new-project-button' class='project-tab not-sortable'>New project</button>
       </li>
 
     </ul>
 
+    {{! PROJECT DISPLAY AREA }}
     <div class='project-workspace project-name'>
 
+      {{! PROJECT LOOP }}
       {{#each projects}}
         <div id='project-{{id}}' class='project-workspace'>
-          <div class='flex-row'>
+          <div class='flex-row workspace-header'>
 
             <h3 class='project-name'>{{name}}</h3>
-
+            {{! add column button }}
+            <div class='new-column-column'>
+              <button id='column-project-{{id}}' class='new-column-button'>Add Column</button>
+            </div>
           </div>
 
           <div class='column-container'>
 
+            {{! COLUMN LOOP }}
             {{#each columns}}
               <div id='column-{{id}}' class='column-wrapper br-5'>
                 <h4 class='column-name'>{{name}}</h4>
                 <ul class='column'>
+
+                  {{! CARD LOOP }}
                   {{#each cards}}
                     <li class='card'>
                       <div id='card-{{id}}' class='card-toggle'>
@@ -48,28 +58,27 @@
                       </div>
                     </li>
                   {{/each}}
+
                 </ul>
                 <button id='{{id}}' class='add-card-button not-sortable'>Add Card</button>
               </div>
             {{/each}}
-
-            <div class='column-wrapper new-column-column'>
-
-              <button id='column-project-{{id}}' class='new-column-button'>Add Column</button>
-
-            </div>
 
           </div>
         </div>
       {{/each}}
     </div>
   </div>
+
+  {{! TRASH DROP }}
   <div class='trash-drop'>
     <h4 class=''>
       Drop Project, Column, Or Card Here To Delete
     </h4>
   </div>
+
 </div>
+
 <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
 <script src='https://code.jquery.com/ui/1.13.0/jquery-ui.js'></script>
 
